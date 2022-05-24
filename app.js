@@ -86,13 +86,7 @@ function isLoggedOut(req, res, next){
     res.redirect('/');
 }
 
-
-
-
-
-
-
-app.get('/', (req, res)=>{
+app.get("/", (req, res)=>{
     let garcon,fille,enseignant,laureat,reuissite
     Chiffre.find({}).then((result)=>{
         garcon = result[0].nombre;
