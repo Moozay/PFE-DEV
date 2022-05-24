@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Contacter</title>
+    <meta charset="ut-8" />
+    <link rel="stylesheet" href="contacteradmin.css" />
+  </head>
+  <body>
+    <div class="flex-container">
+      <h2>Contacter L'administrateur de l'AGS</h2>
+      <form
+        method="post"
+        action="mailto:hbapetelinoua@gmail.com"
+        enctype="text/plain"
+      >
+        <div class="input-name-flex">
+          <input
+            type="text"
+            id="name"
+            name="sname"
+            placeholder="Veiller Entrer Votre Nom"
+            required
+          />
+        </div>
+        <div class="textarea-flex">
+          <textarea id="message" rows="11" cols="60" name="ssubject" required>
+Saisir Votre Message</textarea
+          >
+        </div>
+        <div class="input-submit-flex">
+          <input type="submit" id="envoi" value="Envoyer" />
+        </div>
+      </form>
+    </div>
+    <div class="footer">© 2022 copyright</div>
+  </body>
+</html>

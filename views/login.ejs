@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gestion de scolarité</title>
+    <link rel="stylesheet" href="/css/login.css" />
+  </head>
+  <body>
+    <div class="background">
+      <div class="form">
+        <form id="block1" class="box" action="/login" method="post">
+          <h1>CSA</h1>
+          <input
+            type="text"
+            name="identifiant"
+            id="identifiant"
+            placeholder="Entrer votre identifiant"
+            required
+          />
+          <input
+            type="password"
+            name="password"
+            id="password"
+            placeholder="Entrer votre mot de passe"
+            required
+          />
+          <select name="role" id="role">
+            <option value="admin">ADMIN</option>
+            <option value="directeur">DIRECTEUR</option>
+            <option value="principal">PRINCIPAL</option>
+            <option value="professeur">PROFESSEUR</option>
+            <option value="surveillant">SURVEILLANT</option>
+            <option value="comptable">COMPTABLE</option>
+        </select>
+          <input type="submit" name="" value="Connexion" onclick="login"/>
+          <div class="error">
+            <% if (error) { %>
+              <p>Invalid info</p>
+            <% } %>
+          </div>
+        </form>
+      </div>
+    </div>
+    <!-- <script>
+     block1.addEventListener('submit',async (e)=>{
+      e.preventDefault()
+      const formData = new FormData(block1)
+      
+      const identifiant = formData.getAll('identifiant')[0];
+      const password = formData.getAll('password')[0];
+      const role = formData.getAll('role')[0];
+    const userData = {identifiant,password,role}
+
+    const res = await fetch('/entre',{
+      method:"POST",
+      headers:{ "Content-Type": "application/json"},
+      body:JSON.stringify(userData)
+    })
+
+    const  data = await res.json()
+    console.log(data);
+    /* if(role == admi){
+      //window.location.href = "/accueiladmin"
+    }else{
+      window.location.href = "/accueildirecteur"
+    } */
+    
+
+    })
+    </script> -->
+  </body>
+</html>

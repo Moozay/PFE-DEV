@@ -1,0 +1,40 @@
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+  padding: 30px;
+  color: antiquewhite;
+  background-color: rgb(19, 17, 17);
+}
+table {
+  width: 100%;
+  text-align: center;
+  border: 1px solid;
+  border-radius: 5px;
+}
+.table {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+.search {
+  display: flex;
+  justify-content: flex-end;
+  border-radius: 5px;
+  margin-bottom: 3px;
+}
+
+.flex-btn > button {
+  color: aliceblue;
+  background-color: brown;
+  width: 90px;
+  border: none;
+  padding: 5px;
+}
+.flex-btn > button:hover {
+  background-color: lightseagreen;
+}
+#print {
+  width: 15%;
+}

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Accueil convocation</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="/css/accueilconvocation.css" />
+    <script
+      language="javascript"
+      type="text/javascript"
+      src="convocation.js"
+    ></script>
+  </head>
+  <body>
+    <h2>Etablir une convocation</h2>
+    <form method="post" action="convocation.php">
+      <div class="input">
+        <input
+          id="nom_eleve"
+          placeholder="Nom de l'élève"
+          type="text"
+          name="nom"
+        />
+      </div>
+      <div class="input">
+        <input
+          id="pnom_eleve"
+          placeholder="Prénom de l'élève"
+          type="text"
+          name="pnom"
+        />
+      </div>
+      <div class="input">
+        <input
+          id="niveau_eleve"
+          placeholder="Niveau de l'élève"
+          type="text"
+          name="niveau"
+        />
+      </div>
+      <div class="input">
+        <input
+          id="echeance_eleve"
+          placeholder="Dernier échèance"
+          type="text"
+          name="echeance"
+        />
+      </div>
+      <div class="btn">
+        <button type="button" onclick="window.location.href='convocation.html'">
+          Voir
+        </button>
+      </div>
+    </form>
+    <div class="footer">© 2022 copyright</div>
+  </body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Acceuil</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/accueildirecteur.css" />
+  </head>
+  <body>
+    <div class="page">
+      <div class="header">
+        <h1>Application de gestion scolaire</h1>
+      </div>
+      <p>Bienvenue Mr le Directeur des études</p>
+      <div class="navbar">
+        <a href="contacteradmin.html">Contacter l'admin</a>
+        <a href="#">Se déconnecter</a>
+      </div>
+      <div class="side">
+        <h2>Administration</h2>
+        <ul>
+          <li><a href="#">Le Staff Administrative</a></li>
+          <li><a href="/listedeclasse">Liste de élèves</a></li>
+          <li><a href="#">Liste de enseignants</a></li>
+          <li><a href="#">Liste de classes</a></li>
+        </ul>
+        <h2>Comptabilité</h2>
+        <ul>
+          <li><a href="#">Les Factures</a></li>
+          <li><a href="#">Les Dépenses </a></li>
+          <li><a href="#">Listes des élèves</a></li>
+        </ul>
+        <h2><a href="#">Statistique Du Lycée</a></h2>
+        <img src="/images/RR.jpg" alt="IMAGE POUR LE DGR" />
+        <h2><a href="index.html">Calendrier</a></h2>
+      </div>
+      <div class="body">
+        <h1>Taux de reuissite et d'éches globale</h1>
+
+        <div class="ui-widgets">
+          <div class="ui-values">85%</div>
+          <div class="ui-labels">Ruissite</div>
+        </div>
+
+        <div class="ui-widgets">
+          <div class="ui-values">50%</div>
+          <div class="ui-labels">Echecs</div>
+        </div>
+        <div
+          onmouseover="showmore()"
+          onmouseout="normalshow()"
+          class="flex-container"
+        >
+          <div id="inscrit">
+            Nombre total des inscrits<br /><span>1234</span>
+          </div>
+          <div id="girls">Filles <br /><span>720</span></div>
+          <div id="boys">Garçon<br /><span>514</span></div>
+        </div>
+      </div>
+      <div class="footer">© 2022 copyright</div>
+    </div>
+    <script>
+      function showmore() {
+        document.getElementById("girls").innerHTML =
+          "Admis 29% <br>échoués  71%";
+        document.getElementById("boys").innerHTML =
+          "Admis 71% <br>échoués  29%";
+      }
+      function normalshow() {
+        document.getElementById("girls").innerHTML =
+          "Filles <br /><span>720</span>";
+        document.getElementById("boys").innerHTML =
+          "Garçon<br /><span>514</span>";
+      }
+    </script>
+  </body>
+</html>

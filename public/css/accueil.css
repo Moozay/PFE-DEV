@@ -1,0 +1,86 @@
+body {
+    background-image: url(../images/PP.jpg);
+    height: 100vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  
+  #block1,
+  #block2,
+  #block3 {
+    border-radius: 60px;
+    margin-left: 30px;
+  }
+  #box1 {
+    text-align: center;
+    background-color: rgba(224, 224, 159, 0.6);
+  }
+  #box1:hover {
+    background-color: rgba(141, 214, 214, 0.7);
+  }
+  #box2:hover {
+    background-color: rgba(141, 214, 214, 0.7);
+  }
+  #box3:hover {
+    background-color: rgba(141, 214, 214, 0.7);
+  }
+  #box4:hover {
+    background-color: rgba(141, 214, 214, 0.7);
+  }
+  #box5:hover {
+    background-color: rgba(141, 214, 214, 0.7);
+  }
+  #box6:hover {
+    background-color: rgba(141, 214, 214, 0.7);
+  }
+  #box2 {
+    text-align: center;
+    background-color: rgba(63, 63, 3, 0.6);
+  }
+  
+  #box3 {
+    text-align: center;
+    background-color: rgba(152, 223, 124, 0.6);
+  }
+  
+  #box4 {
+    text-align: center;
+    background-color: rgba(206, 115, 206, 0.6);
+  }
+  
+  #box5 {
+    text-align: center;
+    background-color: rgba(104, 96, 153, 0.6);
+  }
+  
+  #box6 {
+    text-align: center;
+    background-color: rgba(189, 113, 26, 0.6);
+  }
+  span {
+    color: blanchedalmond;
+    font-weight: bolder;
+  }
+  
+  .box {
+    background-color: none;
+    margin-left: 70px;
+    margin-right: 70px;
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-row-gap: 10px;
+    grid-column-gap: 50px;
+  }
+  h1,
+  h3 {
+    margin-top: 10px;
+    text-align: center;
+  }
+  .container {
+    margin-top: 50px;
+    text-align: right;
+  
+    position: relative;
+  }
+  

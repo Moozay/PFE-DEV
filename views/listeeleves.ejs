@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Liste élèves</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="/css/listeeleves.css" />
+  </head>
+  <body>
+    <div class="container-flex">
+      <h2>Liste des eleves</h2>
+      <div class="ajouter">
+        <button
+          type="button"
+          onclick="window.location.href='ajoutereleves.html'"
+        >
+          Ajouter
+        </button>
+      </div>
+      <div class="search">
+        <input
+          type="search"
+          name="liste_eleves"
+          placeholder="Chercher un éleve"
+        />
+      </div>
+      <div class="table">
+        <table>
+          <th>Idéntifiant</th>
+          <th>Nom</th>
+          <th>Prénom</th>
+          <th>Date de naissance</th>
+          <th>Niveau</th>
+          <th>Option</th>
+          <tr>
+            <td>Aber4321</td>
+            <td>ADAMA</td>
+            <td>HAMADOU ISSA</td>
+            <td>09/08/2000</td>
+            <td>Terminale</td>
+            <td>
+              <button type="button">Editer</button>
+              <button type="button">Retirer</button>
+            </td>
+          </tr>
+          <tr>
+            <td>zazr4221</td>
+            <td>ZAMZAM</td>
+            <td>TAHER</td>
+            <td>09/08/2002</td>
+            <td>Seconde</td>
+            <td>
+              <button type="button">Editer</button>
+              <button type="button">Retirer</button>
+            </td>
+          </tr>
+          <tr>
+            <td>AJK298</td>
+            <td>TIDJANI</td>
+            <td>AHMAT</td>
+            <td>09/08/2004</td>
+            <td>Seconde</td>
+            <td>
+              <button type="button">Editer</button>
+              <button type="button">Retirer</button>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="footer">© 2022 copyright</div>
+  </body>
+</html>

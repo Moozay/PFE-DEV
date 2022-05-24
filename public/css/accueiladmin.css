@@ -1,0 +1,42 @@
+body {
+  background-image: url("../images/PP.jpg");
+}
+footer {
+  position: relative;
+  margin-top: relative;
+}
+table {
+  background-color: lightslategray;
+  margin-right: 2px;
+  margin-left: 2px;
+  margin-top: 5%;
+  text-align: center;
+  border: 3px solid darkblue;
+}
+h3,
+h1 {
+  color: rgb(165, 42, 42, 0.5);
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-style: oblique;
+  text-align: center;
+}
+#envoi,
+#supp {
+  margin-bottom: 10px;
+}
+label {
+  margin-left: 40%;
+}
+#prenom,
+#nom,
+#iden,
+#poste,
+#motdepasse {
+  width: 20%;
+  margin-left: 40%;
+}
+#ajout {
+  margin-top: 4px;
+  margin-left: 54%;
+}

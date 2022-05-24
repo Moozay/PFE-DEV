@@ -1,0 +1,42 @@
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+  padding: 30px;
+  color: antiquewhite;
+  background-color: rgb(19, 17, 17);
+}
+table {
+  width: 100%;
+  text-align: center;
+  border: 1px solid;
+  border-radius: 5px;
+}
+.table {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+.search {
+  display: flex;
+  justify-content: flex-end;
+  border-radius: 5px;
+  margin-bottom: 3px;
+}
+.ajouter {
+  display: flex;
+  border-radius: 5px;
+  margin-top: 3px;
+  margin-bottom: -20px;
+}
+.ajouter > button {
+  color: aliceblue;
+  background-color: brown;
+  width: 90px;
+  border: none;
+  padding: 5px;
+}
+.ajouter > button:hover {
+  background-color: lightseagreen;
+}

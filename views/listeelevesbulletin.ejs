@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Liste de bulletin de élèves</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="/css/listeelevesbulletins.css" />
+  </head>
+  <body>
+    <div class="container-flex">
+      <h2>Liste de bulletins de élèves</h2>
+      <div class="flex-btn">
+        <button id="print" type="button" onclick="window.location.href='#'">
+          Imprimer Tout
+        </button>
+      </div>
+      <div class="search">
+        <input
+          type="search"
+          name="liste_eleves"
+          placeholder="Chercher un éleve"
+        />
+      </div>
+      <div class="table">
+        <table>
+          <th>Idéntifiant</th>
+          <th>Nom</th>
+          <th>Prénom</th>
+          <th>Date de naissance</th>
+          <th>Niveau</th>
+          <th>Option</th>
+          <tr>
+            <td>Aber4321</td>
+            <td id="nom">ADAMA</td>
+            <td>HAMADOU ISSA</td>
+            <td>09/08/2000</td>
+            <td>Terminale</td>
+            <td>
+              <button
+                type="button"
+                onclick="window.location.href='bulletin.html'"
+              >
+                Voir
+              </button>
+              <button type="button">Editer</button>
+            </td>
+          </tr>
+          <tr>
+            <td>zazr4221</td>
+            <td>ZAMZAM</td>
+            <td>TAHER</td>
+            <td>09/08/2002</td>
+            <td>Seconde</td>
+            <td>
+              <button type="button">Voir</button>
+              <button type="button">Editer</button>
+            </td>
+          </tr>
+          <tr>
+            <td>AJK298</td>
+            <td>TIDJANI</td>
+            <td>AHMAT</td>
+            <td>09/08/2004</td>
+            <td>Seconde</td>
+            <td>
+              <button type="button">Voir</button>
+              <button type="button">Editer</button>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="footer">© 2022 copyright</div>
+  </body>
+</html>

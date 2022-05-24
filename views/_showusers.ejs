@@ -1,0 +1,13 @@
+<% for (var i = 0; i < result.length; i++){ %> 
+    <tr>
+        <td><%= result[i].identifiant %> </td>
+        <td><%= result[i].Firstname %> </td>
+        <td><%= result[i].Lastname %> </td>
+        <td><%= result[i].Email %> </td>
+        <td><%= result[i].role %> </td>
+          <td><div>
+        <button class="btn btn-primary" type="button">Editer</button>
+        <button class="btn btn-danger" type="button">Supprimer</button>
+      </div></td>
+    </tr>
+    <% } %> 

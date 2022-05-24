@@ -1,0 +1,28 @@
+body {
+  background-image: url(../images/PP.jpg);
+}
+.form,
+h1 {
+  display: block;
+  left: 50%;
+  right: 40%;
+  margin-top: 80px;
+  margin-left: 100px;
+  text-align: center;
+}
+.text {
+  border-radius: 5px;
+  width: 40%;
+  background-color: rgba(235, 235, 37, 0.1);
+}
+input {
+  border-radius: 5px;
+  width: 40%;
+  background-color: rgba(7, 202, 89, 0.1);
+}
+button {
+  margin-left: 65%;
+  display: block;
+  text-align: right;
+  border-radius: 5px;
+}

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Classes</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="/css/listedeclasse.css" />
+  </head>
+  <body>
+    <div
+      onmouseover="showmore()"
+      onmouseout="normalshow()"
+      class="container-flex"
+    >
+      <div id="seconde" onclick="window.location.href='/listeeleves'">
+        2nde
+      </div>
+      <div onclick="window.location.href='listeeleves.html'" id="premiere">
+        1ère
+      </div>
+      <div onclick="window.location.href='listeeleves.html'" id="terminale">
+        Terminale
+      </div>
+    </div>
+    <script>
+      function showmore() {
+        document.getElementById("seconde").innerHTML = "Nombre de élèves<br>60";
+        document.getElementById("premiere").innerHTML =
+          "Nombre de élèves<br>70";
+        document.getElementById("terminale").innerHTML =
+          "Nombre de élèves <br>46";
+      }
+      function normalshow() {
+        document.getElementById("seconde").innerHTML = "2nde";
+        document.getElementById("premiere").innerHTML = "1ère";
+        document.getElementById("terminale").innerHTML = "Terminale";
+      }
+    </script>
+    <div class="footer">© 2022 copyright</div>
+  </body>
+</html>
