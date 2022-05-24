@@ -5,7 +5,7 @@ const ejs = require("ejs");
 const mongoose = require("mongoose");
 const passport = require("passport");
 const localStrategy = require("passport-local");
-const bcrypt = require("bcrypt");
+//const bcrypt = require("bcrypt");
 const dotenv = require('dotenv').config();
 const User = require('./User')
 const Chiffre = require('./Chiffre')
@@ -63,7 +63,7 @@ passport.deserializeUser(function (id, none){
     });
 });
 
-passport.use(new localStrategy(function (username, password, done){
+/* passport.use(new localStrategy(function (username, password, done){
     User.findOne({username: username}, function(err, user){
         if(err) return done(err);
         if(!user) return done(null, false, {message: 'Incorrect username.'});
@@ -75,7 +75,7 @@ passport.use(new localStrategy(function (username, password, done){
             return done(null, user);
         });
     });
-}));
+})); */
 function isLoggedIn(req, res, next){
     if(req.isAuthenticated()) return next();
     res.redirect('/');
