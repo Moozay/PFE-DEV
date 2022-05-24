@@ -1,5 +1,7 @@
 body {
   background-image: url(../images/PP.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 .form,
 h1 {
