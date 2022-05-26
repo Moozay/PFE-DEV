@@ -389,11 +389,6 @@ app.get('/add_user',(req,res)=>{
     res.render("add_user")
 })
 
-app.get('/moozay',(req,res)=>{
-    res.render("moozay")
-})
-
-
 app.listen(port, ()=>{
     console.log("listening on port 3000");
 });
