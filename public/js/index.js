@@ -1,4 +1,4 @@
-
+/* 
 
 
 $("#add_user").submit(function(event){
@@ -46,4 +46,4 @@ if(window.location.pathname == "/"){
         }
 
     })
-}
+} */

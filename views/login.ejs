@@ -14,9 +14,9 @@
           <h1>CSA</h1>
           <input
             type="text"
-            name="identifiant"
-            id="identifiant"
-            placeholder="Entrer votre identifiant"
+            name="email"
+            id="email"
+            placeholder="Entrer votre email"
             required
           />
           <input
@@ -33,33 +33,80 @@
             <option value="surveillant">SURVEILLANT</option>
             <option value="comptable">COMPTABLE</option>
         </select>
-          <input type="submit" name="" value="Connexion" onclick="login"/>
+          <input type="submit" name="" value="Connexion" />
           <div class="error">
-            <% if (error) { %>
-              <p>Invalid info</p>
-            <% } %>
+            <div class="email error"></div>
+            <div class="password error"></div>
+            <div class="role error"></div>
           </div>
         </form>
       </div>
     </div>
-    <!-- <script>
-     block1.addEventListener('submit',async (e)=>{
+    <script>
+      const emailError = document.querySelector('.email.error')
+      const passwordError = document.querySelector('.password.error')
+      const roleError = document.querySelector('.role.error')
+      
+      block1.addEventListener('submit',async (e)=>{
       e.preventDefault()
       const formData = new FormData(block1)
       
-      const identifiant = formData.getAll('identifiant')[0];
+
+      //reset errors
+      emailError.textContent = '';
+      passwordError.textContent = '';
+      roleError.textContent = '';
+      
+      const email = formData.getAll('email')[0];
       const password = formData.getAll('password')[0];
       const role = formData.getAll('role')[0];
-    const userData = {identifiant,password,role}
+    const userData = {email,password,role}
 
-    const res = await fetch('/entre',{
-      method:"POST",
-      headers:{ "Content-Type": "application/json"},
-      body:JSON.stringify(userData)
-    })
+    try{
+      const res = await fetch('/login',{
+        method:"POST",
+        headers:{ "Content-Type": "application/json"},
+        body:JSON.stringify(userData)
+      })
 
-    const  data = await res.json()
-    console.log(data);
+      const  data = await res.json()
+      console.log(data);
+      if (data.errors) {
+        emailError.textContent = data.errors.email
+        passwordError.textContent = data.errors.password
+        roleError.textContent = data.errors.role
+      }
+      if (data.user) {
+        console.log(data.user)
+        switch (data.role) {
+        case "admin":
+            location.assign("/accueiladmin")
+                break;
+        case "directeur":
+        location.assign("/accueildirecteur");
+                break;
+        case "comptable":
+
+                break;
+        case "surveillant":
+        location.assign("/accueilsurveillant");
+                break;
+
+        case "professeur":
+
+            break;      
+        case "principal":
+
+            break; 
+        default:
+            break;
+    }
+      }
+    }catch(err){
+      //console.log(err);
+    }
+
+
     /* if(role == admi){
       //window.location.href = "/accueiladmin"
     }else{
@@ -68,6 +115,6 @@
     
 
     })
-    </script> -->
+    </script>
   </body>
 </html>

@@ -1,15 +1,21 @@
 const express = require("express");
-const session = require('express-session');
 const {create} = require('express-handlebars');
 const ejs = require("ejs");
 const mongoose = require("mongoose");
 const passport = require("passport");
 const localStrategy = require("passport-local");
-//const bcrypt = require("bcrypt");
+const bcrypt = require("bcrypt");
 const dotenv = require('dotenv').config();
 const User = require('./User')
 const Chiffre = require('./Chiffre')
+const flash = require('express-flash')
+const session = require('express-session')
 const app = express();
+const cookieParser = require('cookie-parser')
+const jwt = require('jsonwebtoken')
+
+
+require('./passport-config')(passport)
 
 const port = process.env.PORT || 3000;
 
@@ -32,59 +38,75 @@ const URI = process.env.MONGODB_URL
 
 //Middleware
 app.use(express.static('public'))
-// app.use(express.urlencoded({extended: true}))
-app.use(express.urlencoded());
-app.use(express.json());
-app.set('view engine', 'ejs');
+app.use(express.json())
+app.set('view engine', 'ejs')
+app.use(flash())
 app.use(session({
-    secret: "verygoodsecret", //add this variable to env file
+    secret: process.env.SESSION_SECRET, //add this variable to env file
     resave: false,
-    saveUninitialized: true
+    saveUninitialized: false
 }));
+app.use(passport.initialize())
+app.use(passport.session())
+app.use(cookieParser())
+
 
 
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
 
 
-//passport.js
-app.use(passport.initialize());
-app.use(passport.session());
 
+//error handler
+const handleErrors = (err) =>{
+    console.log(err.message, err.code);
+    let errors = {email: '', password: '', role: ''}
 
+    //incorrect email
+    if(err.message == 'incorrect email'){
+        errors.email = "User does not exist"
+    }
 
-passport.serializeUser(function (user, done){
-    done(null, user.id);
-});
+     //incorrect password
+     if(err.message == 'incorrect password'){
+        errors.password = "Invalid password"
+    }
 
-passport.deserializeUser(function (id, none){
-    User.findById(id, function (err, user){
-        done(err, user);
-    });
-});
+    //incorrect role
+    if(err.message == 'incorrect role'){
+        errors.role = "User name does not match role"
+    }
 
-/* passport.use(new localStrategy(function (username, password, done){
-    User.findOne({username: username}, function(err, user){
-        if(err) return done(err);
-        if(!user) return done(null, false, {message: 'Incorrect username.'});
-
-        bcrypt.compare(password, user.password, function(err, res){
-            if(err) return done(err);
-            if (res === false) return done(null, false, {message: 'Incorrect password.'});
-
-            return done(null, user);
-        });
-    });
-})); */
-function isLoggedIn(req, res, next){
-    if(req.isAuthenticated()) return next();
-    res.redirect('/');
+    if (err.message.includes('user validation failed')) {
+        Object.values(err.errors).forEach(({properties})=>{
+            errors[properties.path] = properties.message
+        })
+    }
+    return errors
+}
+const checkUser = (req, res, next)=>{
+    const token = req.cookies.jwt
+    
+    if (token) {
+        jwt.verify(token, 'ags', async(err,  decordedToken) =>{
+            if(err){
+                console.log(err.message);
+                res.locals.user = null
+                next();
+            }else{
+                console.log(decordedToken);
+                let user = await User.findById(decordedToken.id)
+                res.locals.user = user
+                next();
+            }
+        })
+    } else{
+        res.locals.user = null
+        next()
+    }
 }
 
-function isLoggedOut(req, res, next){
-    if(!req.isAuthenticated()) return next();
-    res.redirect('/');
-}
+app.get('*', checkUser);
 
 app.get("/", (req, res)=>{
     let garcon,fille,enseignant,laureat,reuissite
@@ -108,6 +130,11 @@ app.get('/login', (req,res)=>{
     res.render("login", {error});
 });
 
+app.get('/logout', (req,res)=>{
+    res.cookie('jwt', '', {maxAge: 1}) 
+    res.redirect('/');
+});
+
 app.get('/apropos', (req,res)=>{
     let error = req.query.error 
     res.render("apropos");
@@ -117,6 +144,65 @@ app.get('/contact', (req,res)=>{
     res.render("contact");
 });
 
+app.post('/register', async (req,res)=>{
+    console.log(req.body);
+    try {
+        await addUser(req)
+        console.log("user added")
+        res.redirect('/accueiladmin')
+    } catch (error) {
+        res.redirect('/add_user')
+    }
+});
+
+async function addUser(req){
+    try{
+        const salt = await bcrypt.genSalt()
+        const hashPassword = await bcrypt.hash(req.body.password, salt)
+        await User.create({
+            Firstname: req.body.nom,
+            Lastname: req.body.prenom,
+            Email: req.body.email,
+            password: hashPassword,
+            role: req.body.role,
+            identifiant: req.body.identifiant
+        })
+    } catch(e){
+        console.log(e.message);
+    }
+}
+
+
+
+
+const maxAge = 3 * 24 * 60 * 60
+
+const createToken = (id) =>{
+    return jwt.sign({id}, 'ags', {
+        expiresIn: maxAge
+    })
+}
+
+
+const mainAuth = (req, res, next) =>{
+    const token = req.cookies.jwt
+
+
+    if(token){
+        jwt.verify(token, 'ags', (err,  decordedToken) =>{
+            if(err){
+                console.log(err.message);
+                res.redirect('/login')
+            }else{
+                console.log(decordedToken);
+                next();
+            }
+        })
+    }
+    else{
+        res.redirect('/login')
+    }
+}
 
 app.get('/accueildirecteur', (req,res)=>{
     let garcon,fille,enseignant,laureat,reuissite
@@ -136,35 +222,28 @@ app.get('/accueildirecteur', (req,res)=>{
 });
 
 
-app.post('/login',(req,res)=>{
-    switch (req.body.role) {
-        case "admin":
-            res.redirect("/accueiladmin")
-                break;
-        case "directeur":
-            res.redirect("/accueildirecteur");
-                break;
-        case "comptable":
+app.post('/login',async (req, res, next)=>{
+    console.log(req.body);
+    const {email, password, role} = req.body
 
-                break;
-        case "surveillant":
-            res.redirect("/accueilsurveillant");
-                break;
-
-        case "professeur":
-
-            break;      
-        case "principal":
-
-            break; 
-        default:
-            break;
+    try {
+        const user = await User.login(email, password, role)
+        const token = createToken(user._id)
+        res.cookie('jwt', token, {httpOnly: true, maxAge: maxAge * 1000})
+        res.cookie('role', role, {httpOnly: true, maxAge: maxAge * 1000})
+        res.status(200).json({user: user._id, role})
+    } 
+    catch (err) {
+        const errors = handleErrors(err)
+        res.status(400).json({errors})
     }
+    
 })
 
-app.get('/accueiladmin',(req,res)=>{
+app.get('/accueiladmin',mainAuth,(req,res)=>{
     let error = req.query.error
     User.find({}).then((users)=>{
+        console.log(JSON.stringify(users[0]._id));
         res.render("viewuser", {users});
     }).catch((e)=>{
         console.log(e);
@@ -308,6 +387,10 @@ app.get('/bulletin',(req,res)=>{
 
 app.get('/add_user',(req,res)=>{
     res.render("add_user")
+})
+
+app.get('/moozay',(req,res)=>{
+    res.render("moozay")
 })
 
 
