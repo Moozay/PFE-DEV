@@ -385,6 +385,17 @@ app.get('/attestation',mainAuth,(req,res)=>{
     
 })
 
+
+app.get('/convocation',mainAuth,(req,res)=>{
+    let error = req.query.error
+    User.find({}).then((users)=>{
+        res.render("convocation");
+    }).catch((e)=>{
+        console.log(e);
+        return null;
+    })
+    
+})
 app.get('/bulletin',mainAuth,(req,res)=>{
     let error = req.query.error
     User.find({}).then((users)=>{

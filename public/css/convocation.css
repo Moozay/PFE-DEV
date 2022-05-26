@@ -1,0 +1,51 @@
+page {
+  margin-left: 100px;
+  background: white;
+  display: block;
+  margin-bottom: 0.5cm;
+  box-shadow: 0 0 0.5cm rgba(0, 0, 0, 0.5);
+}
+page[size="A4"] {
+  width: 29.7cm;
+  height: 21cm;
+}
+.button {
+  display: flex;
+  justify-content: flex-end;
+}
+button {
+  color: antiquewhite;
+  background-color: brown;
+  border: none;
+  padding: 5px;
+}
+button:hover {
+  background-color: aquamarine;
+  color: lightslategray;
+}
+.info_ecole {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  text-align: center;
+  padding: 40px;
+}
+h2 {
+  margin-top: 60px;
+  text-align: center;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-style: oblique;
+  padding: 40px;
+}
+p {
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 40px;
+}
+span {
+  color: blue;
+}
+.signature {
+  display: flex;
+  margin-top: 30px;
+  margin-left: 900px;
+}
