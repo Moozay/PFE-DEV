@@ -105,6 +105,25 @@ const checkUser = (req, res, next)=>{
         next()
     }
 }
+const mainAuth = (req, res, next) =>{
+    const token = req.cookies.jwt
+
+
+    if(token){
+        jwt.verify(token, 'ags', (err,  decordedToken) =>{
+            if(err){
+                console.log(err.message);
+                res.redirect('/login')
+            }else{
+                console.log(decordedToken);
+                next();
+            }
+        })
+    }
+    else{
+        res.redirect('/login')
+    }
+}
 
 app.get('*', checkUser);
 
@@ -144,7 +163,7 @@ app.get('/contact', (req,res)=>{
     res.render("contact");
 });
 
-app.post('/register', async (req,res)=>{
+app.post('/register',mainAuth, async (req,res)=>{
     console.log(req.body);
     try {
         await addUser(req)
@@ -184,27 +203,9 @@ const createToken = (id) =>{
 }
 
 
-const mainAuth = (req, res, next) =>{
-    const token = req.cookies.jwt
 
 
-    if(token){
-        jwt.verify(token, 'ags', (err,  decordedToken) =>{
-            if(err){
-                console.log(err.message);
-                res.redirect('/login')
-            }else{
-                console.log(decordedToken);
-                next();
-            }
-        })
-    }
-    else{
-        res.redirect('/login')
-    }
-}
-
-app.get('/accueildirecteur', (req,res)=>{
+app.get('/accueildirecteur',mainAuth, (req,res)=>{
     let garcon,fille,enseignant,laureat,reuissite
     Chiffre.find({}).then((result)=>{
         garcon = result[0].nombre;
@@ -252,7 +253,7 @@ app.get('/accueiladmin',mainAuth,(req,res)=>{
     
 })
 
-app.get('/accueilsurveillant',(req,res)=>{
+app.get('/accueilsurveillant',mainAuth,(req,res)=>{
     console.log("sur");
     let error = req.query.error
     User.find({}).then((users)=>{
@@ -264,7 +265,7 @@ app.get('/accueilsurveillant',(req,res)=>{
     
 })
 
-app.get('/staff',(req,res)=>{
+app.get('/staff',mainAuth,(req,res)=>{
     let error = req.query.error
     User.find({}).then((users)=>{
         res.render("staff", {users});
@@ -275,7 +276,7 @@ app.get('/staff',(req,res)=>{
     
 })
 
-app.get('/listedeclasse',(req,res)=>{
+app.get('/listedeclasse',mainAuth,(req,res)=>{
     let error = req.query.error
     User.find({}).then((users)=>{
         res.render("listedeclasse");
@@ -286,7 +287,7 @@ app.get('/listedeclasse',(req,res)=>{
     
 })
 
-app.get('/listeeleves',(req,res)=>{
+app.get('/listeeleves',mainAuth,(req,res)=>{
     let error = req.query.error
     User.find({}).then((users)=>{
         res.render("listeeleves");
@@ -297,7 +298,7 @@ app.get('/listeeleves',(req,res)=>{
     
 })
 
-app.get('/listeclassebulletins',(req,res)=>{
+app.get('/listeclassebulletins',mainAuth,(req,res)=>{
     let error = req.query.error
     User.find({}).then((users)=>{
         res.render("listeclassebulletins");
@@ -308,7 +309,7 @@ app.get('/listeclassebulletins',(req,res)=>{
     
 })
 
-app.get('/listeelevesbulletin',(req,res)=>{
+app.get('/listeelevesbulletin',mainAuth,(req,res)=>{
     let error = req.query.error
     User.find({}).then((users)=>{
         res.render("listeelevesbulletin");
@@ -319,7 +320,7 @@ app.get('/listeelevesbulletin',(req,res)=>{
     
 })
 
-app.get('/listeelevesbulletin',(req,res)=>{
+app.get('/listeelevesbulletin',mainAuth,(req,res)=>{
     let error = req.query.error
     User.find({}).then((users)=>{
         res.render("listeelevesbulletin");
@@ -330,7 +331,7 @@ app.get('/listeelevesbulletin',(req,res)=>{
     
 })
 
-app.get('/attestationconvocationaccueil',(req,res)=>{
+app.get('/attestationconvocationaccueil',mainAuth,(req,res)=>{
     let error = req.query.error
     User.find({}).then((users)=>{
         res.render("attestationconvocationaccueil");
@@ -341,7 +342,7 @@ app.get('/attestationconvocationaccueil',(req,res)=>{
     
 })
 
-app.get('/listeclasseattestation',(req,res)=>{
+app.get('/listeclasseattestation',mainAuth,(req,res)=>{
     let error = req.query.error
     User.find({}).then((users)=>{
         res.render("listeclasseattestation");
@@ -352,7 +353,7 @@ app.get('/listeclasseattestation',(req,res)=>{
     
 })
 
-app.get('/listeeleveattestation',(req,res)=>{
+app.get('/listeeleveattestation',mainAuth,(req,res)=>{
     let error = req.query.error
     User.find({}).then((users)=>{
         res.render("listeeleveattestation");
@@ -363,7 +364,7 @@ app.get('/listeeleveattestation',(req,res)=>{
     
 })
 
-app.get('/accueilconvocation',(req,res)=>{
+app.get('/accueilconvocation',mainAuth,(req,res)=>{
     let error = req.query.error
     User.find({}).then((users)=>{
         res.render("accueilconvocation");
@@ -374,7 +375,7 @@ app.get('/accueilconvocation',(req,res)=>{
     
 })
 
-app.get('/bulletin',(req,res)=>{
+app.get('/bulletin',mainAuth,(req,res)=>{
     let error = req.query.error
     User.find({}).then((users)=>{
         res.render("bulletin");
