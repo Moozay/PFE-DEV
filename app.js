@@ -374,6 +374,16 @@ app.get('/accueilconvocation',mainAuth,(req,res)=>{
     })
     
 })
+app.get('/attestation',mainAuth,(req,res)=>{
+    let error = req.query.error
+    User.find({}).then((users)=>{
+        res.render("attestation");
+    }).catch((e)=>{
+        console.log(e);
+        return null;
+    })
+    
+})
 
 app.get('/bulletin',mainAuth,(req,res)=>{
     let error = req.query.error
