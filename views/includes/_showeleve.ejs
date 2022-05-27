@@ -1,0 +1,17 @@
+<% for(var i = 0; i < eleves.length; i++) { %>
+    <tr>
+        <td><%= eleves[i].codeapogee %> </td>
+        <td><%= eleves[i].nom %> </td>
+        <td><%= eleves[i].prenom %> </td>
+        <td><%= eleves[i].age %> </td>
+        <td><%= classe%> </td>
+        <td>
+            <a href="/update-user?id=<%= eleves[i]._id%>" class="btn border-shadow update">
+                <span class="text-gradient"><i>UPDATE</i></span>
+            </a>
+            <a class="btn border-shadow delete" data-id=<%= eleves[i]._id%> >
+                <span class="text-gradient"><i>DELETE</i></span>
+            </a>
+        </td>
+    </tr>
+    <% } %>

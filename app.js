@@ -7,6 +7,10 @@ const localStrategy = require("passport-local");
 const bcrypt = require("bcryptjs");
 const dotenv = require('dotenv').config();
 const User = require('./User')
+const Seconde = require('./Seconde')
+const Premiere = require('./Premiere')
+const Terminale = require('./Terminale')
+const Prof = require('./Prof')
 const Chiffre = require('./Chiffre')
 const flash = require('express-flash')
 const session = require('express-session')
@@ -137,6 +141,7 @@ app.get("/", (req, res)=>{
         reuissite = result[4].nombre;
         let data={garcon,fille,enseignant,laureat,reuissite}
         res.render("index",{data})
+
     }).catch((e)=>{
         console.log(e);
         return null;
@@ -172,6 +177,28 @@ app.post('/register',mainAuth, async (req,res)=>{
     } catch (error) {
         res.redirect('/add_user')
     }
+})
+
+app.post('/add_prof',mainAuth, async (req,res)=>{
+    console.log(req.body);
+    try {
+        await addProf(req)
+        console.log("prof added")
+        res.redirect('/viewprof')
+    } catch (error) {
+        res.redirect('/add_user')
+    }
+});
+
+app.post('/add_eleve', async (req,res)=>{
+    try {
+        await addEleve(req)
+        console.log("user added");
+        res.redirect('/listedeclasse')
+    } catch (error) {
+        res.redirect('/add_eleve')
+    }
+    
 });
 
 async function addUser(req){
@@ -188,6 +215,256 @@ async function addUser(req){
         })
     } catch(e){
         console.log(e.message);
+    }
+}
+
+
+async function addProf(req){
+    try{
+        const salt = await bcrypt.genSalt()
+        const hashPassword = await bcrypt.hash(req.body.password, salt)
+        await Prof.create({
+            Firstname: req.body.nom,
+            Lastname: req.body.prenom,
+            Email: req.body.email,
+            identifiant: req.body.identifiant,
+            password: hashPassword,
+            Matiere: req.body.matiere,
+            Classe: req.body.classe,
+            identifiant: req.body.identifiant
+        })
+    } catch(e){
+        console.log(e.message);
+    }
+}
+
+async function addEleve(req){
+    try {
+        const age = req.body.age.replaceAll('-', '');
+        const codeA = req.body.nom.charAt(0) + req.body.prenom.charAt(0) + age
+        switch (req.body.classe) {
+            case 'Premiere':
+                await Premiere.create({
+                    nom: req.body.nom,
+                    prenom:req.body.prenom,
+                    age: req.body.age,
+                    sexe: req.body.sexe,
+                    nompere: req.body.nompere,
+                    nommere: req.body.nommere,
+                    propere: req.body.propere,
+                    promere: req.body.promere,
+                    nomtuteur: req.body.nomtuteur,
+                    protuteur: req.body.protuteur,
+                    numtuteur: req.body.numtuteur,
+                    devoir: {
+                        mathematique:{
+                           note1 : null,
+                           note2 : null,
+                           note3 : null,
+                           appreciation :null
+                        },
+                        biologie:{
+                            note1 : null,
+                            note2 : null,
+                            note3 : null,
+                            appreciation :null
+                         },
+                         anglais:{
+                            note1 : null,
+                            note2 : null,
+                            note3 : null,
+                            appreciation :null
+                         },
+                         physique:{
+                            note1 : null,
+                            note2 : null,
+                            note3 : null,
+                            appreciation :null
+                         },
+                         chimie:{
+                            note1 : null,
+                            note2 : null,
+                            note3 : null,
+                            appreciation :null
+                         },
+                         philosophe:{
+                            note1 : null,
+                            note2 : null,
+                            note3 : null,
+                            appreciation :null
+                         },
+                         informatique:{
+                            note1 : null,
+                            note2 : null,
+                            note3 : null,
+                            appreciation :null
+                         },
+                         conduite:{
+                            note1 : null,
+                            note2 : null,
+                            note3 : null,
+                            appreciation :null
+                         },
+                         francais:{
+                            note1 : null,
+                            note2 : null,
+                            note3 : null,
+                            appreciation :null
+                         }
+                    },
+                    codeapogee: codeA
+                })
+                break;
+                case 'Seconde':
+                    await Seconde.create({
+                        nom: req.body.nom,
+                        prenom:req.body.prenom,
+                        age: req.body.age,
+                        sexe: req.body.sexe,
+                        nompere: req.body.nompere,
+                        nommere: req.body.nommere,
+                        propere: req.body.propere,
+                        promere: req.body.promere,
+                        nomtuteur: req.body.nomtuteur,
+                        protuteur: req.body.protuteur,
+                        numtuteur: req.body.numtuteur,
+                        devoir: {
+                            mathematique:{
+                               note1 : null,
+                               note2 : null,
+                               note3 : null,
+                               appreciation :null
+                            },
+                            biologie:{
+                                note1 : null,
+                                note2 : null,
+                                note3 : null,
+                                appreciation :null
+                             },
+                             anglais:{
+                                note1 : null,
+                                note2 : null,
+                                note3 : null,
+                                appreciation :null
+                             },
+                             physique:{
+                                note1 : null,
+                                note2 : null,
+                                note3 : null,
+                                appreciation :null
+                             },
+                             chimie:{
+                                note1 : null,
+                                note2 : null,
+                                note3 : null,
+                                appreciation :null
+                             },
+                             philosophe:{
+                                note1 : null,
+                                note2 : null,
+                                note3 : null,
+                                appreciation :null
+                             },
+                             informatique:{
+                                note1 : null,
+                                note2 : null,
+                                note3 : null,
+                                appreciation :null
+                             },
+                             conduite:{
+                                note1 : null,
+                                note2 : null,
+                                note3 : null,
+                                appreciation :null
+                             },
+                             francais:{
+                                note1 : null,
+                                note2 : null,
+                                note3 : null,
+                                appreciation :null
+                             }
+                        },
+                        codeapogee: codeA
+                    })
+                    break;
+                    case 'Terminale':
+                        await Terminale.create({
+                            nom: req.body.nom,
+                            prenom:req.body.prenom,
+                            age: req.body.age,
+                            sexe: req.body.sexe,
+                            nompere: req.body.nompere,
+                            nommere: req.body.nommere,
+                            propere: req.body.propere,
+                            promere: req.body.promere,
+                            nomtuteur: req.body.nomtuteur,
+                            protuteur: req.body.protuteur,
+                            numtuteur: req.body.numtuteur,
+                            devoir: {
+                                mathematique:{
+                                   note1 : null,
+                                   note2 : null,
+                                   note3 : null,
+                                   appreciation :null
+                                },
+                                biologie:{
+                                    note1 : null,
+                                    note2 : null,
+                                    note3 : null,
+                                    appreciation :null
+                                 },
+                                 anglais:{
+                                    note1 : null,
+                                    note2 : null,
+                                    note3 : null,
+                                    appreciation :null
+                                 },
+                                 physique:{
+                                    note1 : null,
+                                    note2 : null,
+                                    note3 : null,
+                                    appreciation :null
+                                 },
+                                 chimie:{
+                                    note1 : null,
+                                    note2 : null,
+                                    note3 : null,
+                                    appreciation :null
+                                 },
+                                 philosophe:{
+                                    note1 : null,
+                                    note2 : null,
+                                    note3 : null,
+                                    appreciation :null
+                                 },
+                                 informatique:{
+                                    note1 : null,
+                                    note2 : null,
+                                    note3 : null,
+                                    appreciation :null
+                                 },
+                                 conduite:{
+                                    note1 : null,
+                                    note2 : null,
+                                    note3 : null,
+                                    appreciation :null
+                                 },
+                                 francais:{
+                                    note1 : null,
+                                    note2 : null,
+                                    note3 : null,
+                                    appreciation :null
+                                 }
+                            },
+                            codeapogee: codeA
+                        })
+                        break;
+        
+            default:
+                break;
+        }
+    } catch (error) {
+        console.log(error);
     }
 }
 
@@ -230,8 +507,8 @@ app.post('/login',async (req, res, next)=>{
     try {
         const user = await User.login(email, password, role)
         const token = createToken(user._id)
-        res.cookie('jwt', token, {httpOnly: true, maxAge: maxAge * 1000})
-        res.cookie('role', role, {httpOnly: true, maxAge: maxAge * 1000})
+        res.cookie('jwt', token, { maxAge: maxAge * 1000})
+        res.cookie('role', role, { maxAge: maxAge * 1000})
         res.status(200).json({user: user._id, role})
     } 
     catch (err) {
@@ -246,6 +523,18 @@ app.get('/accueiladmin',mainAuth,(req,res)=>{
     User.find({}).then((users)=>{
         console.log(JSON.stringify(users[0]._id));
         res.render("viewuser", {users});
+    }).catch((e)=>{
+        console.log(e);
+        return null;
+    })
+    
+})
+
+app.get('/viewstaffs',mainAuth,(req,res)=>{
+    let error = req.query.error
+    User.find({}).then((users)=>{
+        console.log(JSON.stringify(users[0]._id));
+        res.render("viewstaffs", {users});
     }).catch((e)=>{
         console.log(e);
         return null;
@@ -407,9 +696,78 @@ app.get('/bulletin',mainAuth,(req,res)=>{
     
 })
 
+app.get('/viewprof',(req,res)=>{
+    let error = req.query.error
+    Prof.find({}).then((users)=>{
+        res.render("viewprof", {users});
+    }).catch((e)=>{
+        console.log(e);
+        return null;
+    })
+    
+})
+
+app.get('/eleve?',(req,res)=>{
+    const classe = req.query.id
+    switch (req.query.id) {
+        case 'premiere':
+            Premiere.find({}).then((eleves)=>{
+                res.render("vieweleves", {eleves, classe});
+            }).catch((e)=>{
+                console.log(e);
+                return null;
+            }) 
+            break;
+        case 'seconde':
+            Seconde.find({}).then((eleves)=>{
+                res.render("vieweleves", {eleves, classe});
+            }).catch((e)=>{
+                console.log(e);
+                return null;
+            }) 
+                break;
+        case 'terminale':
+            Terminale.find({}).then((eleves)=>{
+                res.render("vieweleves", {eleves, classe});
+            }).catch((e)=>{
+                console.log(e);
+                return null;
+            }) 
+            break;
+        default:
+            break;
+    }
+})
+
+
+app.get('/liste_classe',mainAuth,(req,res)=>{
+
+    res.render("liste_classe")
+    
+})
+
+
 app.get('/add_user',(req,res)=>{
     res.render("add_user")
 })
+
+app.get('/add_staff',(req,res)=>{
+    res.render("add_staff")
+})
+
+app.get('/add_prof',(req,res)=>{
+    res.render("add_prof")
+})
+
+app.get('/add_eleve',(req,res)=>{
+    res.render("add_eleve")
+})
+
+app.post('/classe',(req,res)=>{
+    console.log(req.body);
+})
+
+
 
 app.listen(port, ()=>{
     console.log("listening on port 3000");

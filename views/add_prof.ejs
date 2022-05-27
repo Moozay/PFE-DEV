@@ -1,0 +1,83 @@
+ <!-- include header -->
+<%- include('includes/_headeradmin') %>
+<!-- /include header -->
+
+  <!-- Main Site -->
+  <main id="site-main">
+    <div class="container">
+        <div class="box-nav d-flex justify-between">
+           <div class="filter">
+               <a href="/viewprof"><i class="fas fa-angle-double-left"></i>Liste de Profs</a>
+           </div>
+        </div>
+        <div class="form-title text-center">
+            <h2 class="text-dark">New User</h2>
+            <span class="text-light">Use the below form to create a new account</span>
+        </div>
+ <!-- form handling -->
+ <form action="/add_prof" method="POST" id="add_user">
+    <div class="new_user">
+        <div class="form-group">
+            <label for="name" class="text-light">Nom</label>
+            <input type="hidden" name="id" value="">
+            <input type="text" name="nom" value="" placeholder="Mark">
+        </div>
+        <div class="form-group">
+            <label for="name" class="text-light">Prenom</label>
+            <input type="hidden" name="id" value="">
+            <input type="text" name="prenom" value="" placeholder="Stoenis" required>
+        </div>
+        <div class="form-group">
+            <label for="Email" class="text-light">Email</label>
+            <input type="text" name="email" value="" placeholder="example@gmail.com" required>
+        </div>
+        <div class="form-group">
+            <label for="name" class="text-light">IDENTIFIANT</label>
+            <input type="hidden" name="id" value="">
+            <input type="text" name="identifiant" value="" placeholder="BXN989000" required>
+        </div>
+        <div class="form-group">
+            <label for="name" class="text-light">PASSWORD</label>
+            <input type="hidden" name="id" value="">
+            <input type="text" name="password" value="" placeholder="********" required>
+        </div>
+        <div class="form-group">
+            <label for="role" class="text-light">CLASSE</label>
+            <div class="radio inline">
+                <input type="radio" id="radio-4" name="classe" value="Premiere" >
+                <label for="radio-4" class="radio-label">Premiere</label>
+            </div>
+            <div class="radio inline">
+                <input type="radio" id="radio-5" name="classe" value="Seconde" >
+                <label for="radio-5" class="radio-label">Seconde</label>
+            </div>
+            <div class="radio inline">
+                <input type="radio" id="radio-7" name="classe" value="Terminale" >
+                <label for="radio-7" class="radio-label">Terminale</label>
+            </div>
+        </div>
+        <div>
+            <label for="matiere" class="text-light">MATIERE</label>
+            <select name="matiere" id="matiere">
+                <option value="mathematique">MATHEMATIQUES</option>
+                <option value="anglais">ANGLAIS</option>
+                <option value="francais">FRANCAIS</option>
+                <option value="chimie">CHIMIE</option>
+                <option value="physique">PHYSIQUE</option>
+                <option value="informatique">INFORMATIQUE</option>
+                <option value="philosophie">PHILOSOPHIE</option>
+                <option value="conduite">CONDUITE</option>
+            </select>
+        </div>
+        
+
+        <div class="form-group">
+            <input type="submit" class="btn text-dark update">
+        </div>
+
+    </div>
+</form>
+
+<!-- include footer -->
+<%- include('includes/_footeradmin') %>
+<!-- /include footer -->

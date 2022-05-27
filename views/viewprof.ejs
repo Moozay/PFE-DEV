@@ -1,0 +1,47 @@
+
+<!-- include header -->
+<%- include('includes/_headeradmin') %>
+<!-- /include header -->
+
+
+    <!-- Main Site -->
+    <main id="site-main">
+        <div class="container">
+            <div class="box-nav d-flex justify-between">
+                <a href="/add_prof" class="border-shadow">
+                    <span class="text-gradient">New User <i class="fas fa-user"></i></span>
+                </a>
+            </div>
+
+            <!-- form handling -->
+            <form action="/" method="POST">
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>ID</th>
+                            <th>First name</th>
+                            <th>Last name</th>
+                            <th>Email</th>
+                            <th>Matiere</th>
+                            <th>Classe</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <%- include('includes/_showprof') %>
+                    </tbody>
+                </table>
+            </form>
+            <div class="box-nav d-flex justify-between">
+                <a href="/accueildirecteur" class="border-shadow">
+                    <span class="text-gradient">Dashboard<i class="fas fa-user"></i></span>
+                </a>
+            </div>
+        </div>
+    </main>
+<!-- /Main Site -->
+
+
+<!-- include footer -->
+<%- include('includes/_footeradmin') %>
+<!-- /include footer -->

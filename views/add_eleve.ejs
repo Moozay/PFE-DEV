@@ -1,0 +1,110 @@
+
+<!-- include header -->
+<%- include('includes/_headeradmin') %>
+<!-- /include header -->
+
+  <!-- Main Site -->
+  <main id="site-main">
+    <div class="container">
+        <div class="box-nav d-flex justify-between">
+           <div class="filter">
+               <a href='/listedeclasse'><i class="fas fa-angle-double-left"></i> Liste de classe</a>
+           </div>
+        </div>
+        <div class="form-title text-center">
+            <h2 class="text-dark">New Eleve</h2>
+            <span class="text-light">Use the below form to create a new account</span>
+        </div>
+
+        <!-- add user form -->
+        <form action="/add_eleve" method="POST" id="add_user">
+            <div class="new_user">
+                <div class="form-group">
+                    <label for="name" class="text-light">Nom</label>
+                    <input type="hidden" name="id" value="">
+                    <input type="text" name="nom" value="" placeholder="Mark">
+                </div>
+                <div class="form-group">
+                    <label for="name" class="text-light">Prenom</label>
+                    <input type="hidden" name="id" value="">
+                    <input type="text" name="prenom" value="" placeholder="Stoenis" required>
+                </div>
+                <div class="form-group">
+                    <label for="age" class="text-light">Age</label>
+                    <input type="date" name="age" value="" placeholder="12/06/2000" required>
+                </div>
+                <div class="form-group">
+                    <label for="role" class="text-light">Sexe</label>
+                    <div class="radio inline">
+                        <input type="radio" id="radio-6" name="sexe" value="Masculine" >
+                        <label for="radio-6" class="radio-label">Masculine</label>
+                    </div>
+                    <div class="radio inline">
+                        <input type="radio" id="radio-7" name="sexe" value="Feminine" >
+                        <label for="radio-7" class="radio-label">Feminine</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="classe" class="text-light">Classe</label>
+                    <div class="radio inline">
+                        <input type="radio" id="radio-8" name="classe" value="Premiere" >
+                        <label for="radio-8" class="radio-label">Premiere</label>
+                    </div>
+                    <div class="radio inline">
+                        <input type="radio" id="radio-9" name="classe" value="Seconde" >
+                        <label for="radio-9" class="radio-label">Seconde</label>
+                    </div>
+                    <div class="radio inline">
+                        <input type="radio" id="radio-10" name="classe" value="Terminale" >
+                        <label for="radio-10" class="radio-label">Terminale</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="name" class="text-light">NOM DU PERE</label>
+                    <input type="hidden" name="id" value="">
+                    <input type="text" name="nompere" value="" placeholder="MARK KIKI" required>
+                </div>
+                <div class="form-group">
+                    <label for="name" class="text-light">NOM DU MERE</label>
+                    <input type="hidden" name="id" value="">
+                    <input type="text" name="nommere" value="" placeholder="MARIRE KIKI" required>
+                </div>
+                <div class="form-group">
+                    <label for="name" class="text-light">PROFESSION DU PERE</label>
+                    <input type="hidden" name="id" value="">
+                    <input type="text" name="propere" value="" placeholder="FARMER" required>
+                </div>
+                <div class="form-group">
+                    <label for="name" class="text-light">PROFESSION DU MERE</label>
+                    <input type="hidden" name="id" value="">
+                    <input type="text" name="promere" value="" placeholder="FARMER" required>
+                </div>
+                <div class="form-group">
+                    <label for="name" class="text-light">NOM TUTEUR</label>
+                    <input type="hidden" name="id" value="">
+                    <input type="text" name="nomtuteur" value="" placeholder="JOB" required>
+                </div>
+                <div class="form-group">
+                    <label for="name" class="text-light">PROFESSION DU TUTEUR</label>
+                    <input type="hidden" name="id" value="">
+                    <input type="text" name="protuteur" value="" placeholder="FARMER" required>
+                </div>
+                <div class="form-group">
+                    <label for="name" class="text-light">NUMERO DU TUTEUR</label>
+                    <input type="hidden" name="id" value="">
+                    <input type="text" name="numtuteur" value="" placeholder="070655554" required>
+                </div>
+                <div class="form-group">
+                    <input type="submit" class="btn text-dark update">
+                </div>
+        
+            </div>
+        </form>
+       
+    </div>
+</main>
+<!-- /Main Site -->
+
+<!-- include footer -->
+<%- include('includes/_footeradmin') %>
+<!-- /include footer -->
