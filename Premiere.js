@@ -45,6 +45,14 @@ const PremiereSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    scolarite: {
+        tranche1:{
+            type: String,
+        },
+        tranche2: {
+            type: String,
+        }
+    },
     devoir: {
         mathematique:{
            note1 : {
@@ -178,5 +186,13 @@ const PremiereSchema = new mongoose.Schema({
     }
 
 })
+
+PremiereSchema.statics.login = async function(codeapogee, datenaissance){
+    const eleve = await this.findOne({ codeapogee: codeapogee, age: datenaissance });
+    if (eleve) {
+        return eleve
+    }
+    throw Error ('incorrect email')
+}
 
 module.exports = mongoose.model('Premiere', PremiereSchema)

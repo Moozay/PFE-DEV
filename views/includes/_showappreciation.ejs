@@ -1,0 +1,13 @@
+<% for(var i = 0; i < eleve.length; i++) { %>
+    <tr>
+        <td><%= eleve[i].Date %> </td>
+        <td><%= eleve[i].Appreciation %> </td>
+        <td><%= eleve[i].Nomprof %> </td>
+        <td><%= eleve[i].Matiere %> </td>
+        <td>
+            <a class="btn border-shadow delete" data-id=<%= eleve[i]._id%> >
+                <span class="text-gradient"><i>ARCHIVER</i></span>
+            </a>
+        </td>
+    </tr>
+    <% } %>

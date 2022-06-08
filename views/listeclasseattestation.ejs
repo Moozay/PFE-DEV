@@ -7,42 +7,35 @@
   </head>
   <body>
     <div
-      onmouseover="showmore()"
-      onmouseout="normalshow()"
       class="container-flex"
     >
-      <div
-        id="seconde"
-        onclick="window.location.href='listeeleveattestation'"
-      >
-        2nde
+      <div id="premiere" onclick="callpage(this.id)">
+        PREMIERE
       </div>
-      <div
-        onclick="window.location.href='listeeleveattestation'"
-        id="premiere"
-      >
-        1ère
+      <div onclick="callpage(this.id)" id="seconde">
+        SECONDE
       </div>
-      <div
-        onclick="window.location.href='listeeleveattestation'"
-        id="terminale"
-      >
-        Terminale
+      <div onclick="callpage(this.id)" id="terminale">
+        TERMINALE
       </div>
     </div>
     <script>
-      function showmore() {
-        document.getElementById("seconde").innerHTML = "Nombre de élèves<br>60";
-        document.getElementById("premiere").innerHTML =
-          "Nombre de élèves<br>70";
-        document.getElementById("terminale").innerHTML =
-          "Nombre de élèves <br>46";
+    function callpage(id) {
+      switch (id) {
+        case 'premiere':
+          location.assign('/eleveattestation?id=premiere')
+          break;
+        case 'seconde':
+          location.assign('/eleveattestation?id=seconde')
+          break;
+        case 'terminale':
+          location.assign('/eleveattestation?id=terminale')
+          break;
+      
+        default:
+          break;
       }
-      function normalshow() {
-        document.getElementById("seconde").innerHTML = "2nde";
-        document.getElementById("premiere").innerHTML = "1ère";
-        document.getElementById("terminale").innerHTML = "Terminale";
-      }
+    }    
     </script>
     <div class="footer">© 2022 copyright</div>
   </body>

@@ -1,0 +1,123 @@
+
+<!-- include header -->
+<%- include('includes/_headeradmin') %>
+<!-- /include header -->
+
+
+    <!-- Main Site -->
+    <main id="site-main">
+        <div class="container">
+            <div class="box-nav d-flex justify-between">
+                <a href="#" class="border-shadow">
+                    <span class="text-gradient">Imprimer Tout<i class="fas fa-user"></i></span>
+                </a>
+            </div>
+
+            <!-- form handling -->
+            <form action="/" method="POST">
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>MATIERE</th>
+                            <td>1er  </td>
+                            <td>2nd </td>
+                            <td>3eme </td>
+                        </tr>
+                        <tr>
+                            <th>MATHEMATIQUES</th>
+                            <td><%=eleve.devoir.mathematique.note1 %> </td>
+                            <td><%=eleve.devoir.mathematique.note2 %> </td>
+                            <td><%=eleve.devoir.mathematique.note3 %> </td>
+                        </tr>
+                        <tr>
+                            <th>ANGLAIS</th>
+                            <td><%=eleve.devoir.anglais.note1 %> </td>
+                            <td><%=eleve.devoir.anglais.note2 %> </td>
+                            <td><%=eleve.devoir.anglais.note3 %> </td>
+                        </tr>
+                        <tr>
+                            <th>FRANCAIS</th>
+                            <td><%=eleve.devoir.francais.note1 %> </td>
+                            <td><%=eleve.devoir.francais.note2 %> </td>
+                            <td><%=eleve.devoir.francais.note3 %> </td>
+                        </tr>
+                        <tr>
+                            <th>CHIMIE</th>
+                            <td><%=eleve.devoir.chimie.note1 %> </td>
+                            <td><%=eleve.devoir.chimie.note2 %> </td>
+                            <td><%=eleve.devoir.chimie.note3 %> </td>
+                        </tr>
+                        <tr>
+                            <th>PHYSIQUE</th>
+                            <td><%=eleve.devoir.physique.note1 %> </td>
+                            <td><%=eleve.devoir.physique.note2 %> </td>
+                            <td><%=eleve.devoir.physique.note3 %> </td>
+                        </tr>
+                        <tr>
+                            <th>CONDUITE</th>
+                            <td><%=eleve.devoir.conduite.note1 %> </td>
+                            <td><%=eleve.devoir.conduite.note1 %> </td>
+                            <td><%=eleve.devoir.conduite.note1 %> </td>
+                        </tr>
+                        <tr>
+                            <th>PHILOSOPHIE</th>
+                            <td><%=eleve.devoir.philosophe.note1 %> </td>
+                            <td><%=eleve.devoir.philosophe.note1 %> </td>
+                            <td><%=eleve.devoir.philosophe.note1 %> </td>
+                        </tr>
+                        <tr>
+                            <th>INFORMATIQUE</th>
+                            <td><%=eleve.devoir.informatique.note1 %> </td>
+                            <td><%=eleve.devoir.informatique.note1 %> </td>
+                            <td><%=eleve.devoir.informatique.note1 %> </td>
+                        </tr>
+                        <tr>
+                            <th>BIOLOGIE</th>
+                            <td><%=eleve.devoir.biologie.note1 %> </td>
+                            <td><%=eleve.devoir.biologie.note1 %> </td>
+                            <td><%=eleve.devoir.biologie.note1 %> </td>
+                        </tr>
+                    </thead>
+                </table>
+            </form>
+            <div class="box-nav d-flex justify-between">
+                <a class="border-shadow" onclick="link()">
+                    <span class="text-gradient">DASHBOARD<i class="fas fa-user"></i></span>
+                </a>
+            </div>
+        </div>
+    </main>
+<!-- /Main Site -->
+<script>
+    var getCookies = function(){
+  var pairs = document.cookie.split(";");
+  var cookies = {};
+  for (var i=0; i<pairs.length; i++){
+    var pair = pairs[i].split("=");
+    cookies[(pair[0]+'').trim()] = unescape(pair.slice(1).join('='));
+  }
+  return cookies;
+}
+
+var myCookies = getCookies();
+console.log(myCookies.role);
+
+function link() {
+    location.assign('/accueiltuteur?classe=<%=classe%>')
+    /* switch (myCookies.role) {
+        case 'surveillant':
+            location.assign('/accueilsurveillant')
+            break;
+        case 'directeur':
+            location.assign('/accueildirecteur')
+            break;
+    
+        default:
+            break;
+    } */
+}
+</script>
+
+<!-- include footer -->
+<%- include('includes/_footeradmin') %>
+<!-- /include footer -->

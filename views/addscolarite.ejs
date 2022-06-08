@@ -1,0 +1,62 @@
+
+<!-- include header -->
+<%- include('includes/_headeradmin') %>
+<!-- /include header -->
+
+  <!-- Main Site -->
+  <main id="site-main">
+    <div class="container">
+        <div class="box-nav d-flex justify-between">
+           <div class="filter">
+               <a href="/viewelevescolarite?classe=<%= classe %>%>"><i class="fas fa-angle-double-left"></i>Liste d'eleves</a>
+           </div>
+        </div>
+        <div class="form-title text-center">
+            <h2 class="text-dark">SAISIR SCOLARITE</h2>
+        </div>
+
+        <!-- add user form -->
+        <!-- form handling -->
+            <form onsubmit="return setAction(this)" method="POST" id="add_user" >
+                <div class="new_user">
+                    <div class="form-group">
+                        <label for="note" class="text-light">Saisir Tranche</label>
+                        <div class="radio inline">
+                            <input type="radio" id="radio-4" name="tranche" value="tranche1" >
+                            <label for="radio-4" class="radio-label">1</label>
+                        </div>
+                        <div class="radio inline">
+                            <input type="radio" id="radio-5" name="tranche" value="tranche2" >
+                            <label for="radio-5" class="radio-label">2</label>
+                        </div>
+                    </div>
+
+        <div class="form-group">
+            <input type="submit" class="btn text-dark update">
+        </div>
+
+    </div>
+</form>
+       
+    </div>
+</main>
+<script>
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const id = urlParams.get('id')
+    console.log(id);
+    const classe = urlParams.get('classe')
+    console.log(classe);
+    const matiere = urlParams.get('matiere')
+    console.log(matiere);
+    function setAction(form) {
+    form.action = "/addscolarite?id="+id+'&classe='+classe;
+    console.log(form.action);
+    return true;
+    }
+</script>
+<!-- /Main Site -->
+
+<!-- include footer -->
+<%- include('includes/_footeradmin') %>
+<!-- /include footer -->

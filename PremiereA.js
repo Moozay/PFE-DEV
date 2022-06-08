@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const TerminaleSchema = new mongoose.Schema({
+const PremiereASchema = new mongoose.Schema({
     nom: {
         type: String,
         required: true
@@ -187,12 +187,6 @@ const TerminaleSchema = new mongoose.Schema({
 
 })
 
-TerminaleSchema.statics.login = async function(codeapogee, datenaissance){
-    const eleve = await this.findOne({ codeapogee: codeapogee, age: datenaissance });
-    if (eleve) {
-        return eleve
-    }
-    throw Error ('incorrect email')
-}
 
-module.exports = mongoose.model('Terminale', TerminaleSchema)
+
+module.exports = mongoose.model('PremiereA', PremiereASchema)

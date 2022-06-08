@@ -1,65 +1,123 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title>Accueil</title>
+    <title>easy_background</title>
+    <!-- Required meta tags -->
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="/css/accueil.css" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0, shrink-to-fit=no"
+    />
+    <meta name="author" content="Eugenio Segala" />
+    <meta
+      name="description"
+      content="An extremely easy and clear SlideShow Background dev in Vanilla JS."
+    />
+    <meta
+      name="keywords"
+      content="javascript,background-image,slides,slider,slideshow,gallery,js"
+    />
+
+    <!-- Bootstrap CSS -->
     <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
       rel="stylesheet"
-      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+      integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
       crossorigin="anonymous"
     />
+
+    <style>
+      body {
+       
+        color: white;
+        width: 100%;
+        height: 100vh;
+        background-size: cover;
+        background-repeat: no-repeat;
+      }
+
+      
+
+      .ct {
+      height: 60.8vh;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+      }
+      .btn {
+        border: none;
+        border-radius: 5px;
+        background-color: rgb(165, 42, 42, 0.5);
+        padding: 30px;
+        color: whitesmoke;
+        margin: 5px;
+      }
+      h2 {
+        margin-top: 40px;
+        text-align: center;
+        width: 100%;
+        margin-bottom: none;
+      }
+      h2:hover{
+        color: aquamarine;
+      }
+      .btn:hover {
+        background-color: rgb(154, 205, 50, 0.7);
+      }
+  
+      .flex-btn{
+        display: flex;
+        justify-content: flex-end;
+      }
+      #btn-flex{
+        border: none;
+        margin-top: 5px;
+        margin: 4px;
+        border-radius:5px ;
+        background-color: rgb(165, 42, 42,0.6);
+        color: antiquewhite;
+      }
+      #btn-flex:hover{
+        background-color: rgb(165, 42, 42,0.8);
+
+      }
+    </style>
   </head>
   <body>
-    <div class="container">
-      <button
-        type="button"
-        id="block1"
-        onclick="window.location.href='/login';"
-        class="btn btn-default"
-      >
-        Accèder au CAS
-      </button>
-
-      <button
-        type="button"
-        onclick="window.location.href='/apropos'"
-        id="block2"
-        class="btn btn-default"
-      >
-        A propos
-      </button>
-
-      <button
-        type="button"
-        onclick="window.location.href='/contact';"
-        id="block3"
-        class="btn btn-default"
-      >
-        Nous Contacter
-      </button>
+    <div class="flex-btn">
+      <button id="btn-flex">Contacter</button>
+      <button id="btn-flex">A propos</button>
     </div>
-    <div class="text">
-      <h1>Lycée-Collège Ain Chock</h1>
-      <br />
-      <h3>Bienvenue sur notre site web</h3>
-    </div>
-    <div class="box">
-      <div id="box1"><span><%= data.garcon %></span><br />Nombre des éleves</div>
-      <div id="box2"><span><%= data.reuissite%> %</span><br />Taux de reuissite</div>
-      <div id="box3"><span><%= data.laureat %></span><br />Lauréat</div>
-      <div id="box4"><span><%= data.enseignant %></span><br />nombre des ensignants</div>
-      <div id="box5"><span><%= data.fille %></span><br />Nombre de fille</div>
-      <div id="box6"><span><%= data.garcon %></span><br />Nombre de garçon</div>
+    <p><h2>Application de Gestion Scolaire</h2>
+        <h2>Lycée Ain Chock</h2></p>
+    <div class="container ct">
+      <div class="row">
+        <button onclick="window.location.href='login'" class="btn">Se connecter- Staff</button>
+        <button onclick="window.location.href='logintuteur'"class="btn">Se connecter Tuteur</button>
+      </div>
     </div>
 
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-      crossorigin="anonymous"
+    <script src="/js/easy_background.js"></script>
 
-    ></script>
+    <script>
+      easy_background(
+        "body",
+
+        {
+          slide: [
+            "/images/1.jpg",
+            "/images/2.jpg",
+            "/images/3.jpg",
+            "/images/4.jpg",
+            "/images/5.jpg",
+         
+          ],
+
+          delay: [3000, 2000, 2000, 2000, 2000],
+        }
+      );
+    </script>
   </body>
 </html>

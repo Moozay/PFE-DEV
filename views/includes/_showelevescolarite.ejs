@@ -1,0 +1,15 @@
+<% for(var i = 0; i < eleves.length; i++) { %>
+    <tr>
+        <td><%= eleves[i].codeapogee %> </td>
+        <td><%= eleves[i].nom %> </td>
+        <td><%= eleves[i].prenom %> </td>
+        <td><%= eleves[i].scolarite.tranche1%></td>
+        <td><%= eleves[i].scolarite.tranche2%></td>
+        <td><%= classe%></td>
+        <td>
+            <a class="btn border-shadow delete" href="/addscolarite?id=<%=eleves[i]._id%>&classe=<%=classe%>" >
+                <span class="text-gradient"><i>EDITER</i></span>
+            </a>
+        </td>
+    </tr>
+    <% } %>

@@ -7,11 +7,6 @@
     <!-- Main Site -->
     <main id="site-main">
         <div class="container">
-            <div class="box-nav d-flex justify-between">
-                <a href="/add_eleve" class="border-shadow">
-                    <span class="text-gradient">Add new eleve<i class="fas fa-user"></i></span>
-                </a>
-            </div>
 
             <!-- form handling -->
             <form action="/" method="POST">
@@ -21,20 +16,20 @@
                             <th>Code Apogee</th>
                             <th>First name</th>
                             <th>Last name</th>
-                            <th>Date de Naissance</th>
+                            <th>1er Tranche</th>
+                            <th>2nd Tranche</th>
                             <th>Classe</th>
                             <th>Action</th>
-                            <th>Appreciation</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <%- include('includes/_showeleve') %>
+                        <%- include('includes/_showelevescolarite') %>
                     </tbody>
                 </table>
             </form>
             <div class="box-nav d-flex justify-between">
                 <a class="border-shadow" onclick="link()">
-                    <span class="text-gradient">Liste de classe<i class="fas fa-user"></i></span>
+                    <span class="text-gradient">Dashboard<i class="fas fa-user"></i></span>
                 </a>
             </div>
         </div>
@@ -55,18 +50,18 @@ var myCookies = getCookies();
 console.log(myCookies.role);
 
 function link() {
-    location.assign('/listedeclasse')
-    /* switch (myCookies.role) {
-        case 'surveillant':
-            location.assign('/accueilsurveillant')
+    switch (myCookies.role) {
+        case 'comptable':
+            location.assign('/accueilcomptable')
             break;
         case 'directeur':
             location.assign('/accueildirecteur')
             break;
+        
     
         default:
             break;
-    } */
+    }
 }
 </script>
 

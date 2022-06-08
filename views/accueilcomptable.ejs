@@ -6,7 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/css/accueildirecteur.css" />
-    
   </head>
   <body>
     <div class="page">
@@ -22,8 +21,6 @@
         <h2>Administration</h2>
         <ul>
           <li><a href="/staff">Le Staff Administrative</a></li>
-          <li><a href="/listedeclasse">Liste de élèves</a></li>
-          <li><a href="/viewprof">Liste de enseignants</a></li>
         </ul>
         <h2>Comptabilité</h2>
         <ul>
@@ -31,21 +28,12 @@
           <li><a href="#">Les Dépenses </a></li>
           <li><a href="listedeclassescolarite">Scolarité</a></li>
         </ul>
-        <h2><a href="#">Statistique Du Lycée</a></h2>
         <img src="/images/RR.jpg" alt="IMAGE POUR LE DGR" />
         <h2><a href="index.html">Calendrier</a></h2>
       </div>
       <div class="body">
-       <!--  <div class="ui-widgets">
-          <div class="ui-values">85%</div>
-          <div class="ui-labels">Ruissite</div>
-        </div>
-
-        <div class="ui-widgets">
-          <div class="ui-values">50%</div>
-          <div class="ui-labels">Echecs</div>
-        </div> -->
-        <!-- <div
+        <%- include('includes/_progressbar') %>
+        <div
           onmouseover="showmore()"
           onmouseout="normalshow()"
           class="flex-container"
@@ -55,8 +43,7 @@
           </div>
           <div id="girls">Filles <br /><span>720</span></div>
           <div id="boys">Garçon<br /><span>514</span></div>
-        </div> -->
-          <%- include('includes/_progressbar') %>
+        </div>
       </div>
       <div class="footer">© 2022 copyright</div>
     </div>

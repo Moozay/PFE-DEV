@@ -1,0 +1,30 @@
+ <!-- form handling -->
+ <form onsubmit="return setAction(this)" method="POST" id="add_user" >
+    <div class="new_user">
+        <div class="form-group">
+            <label for="name" class="text-light">Saisir Note</label>
+            <input type="hidden" name="id" value="">
+            <input type="number" name="notevalue" value="">
+        </div>
+        <div class="form-group">
+            <label for="note" class="text-light">Devoir</label>
+            <div class="radio inline">
+                <input type="radio" id="radio-4" name="note" value="note1" >
+                <label for="radio-4" class="radio-label">1</label>
+            </div>
+            <div class="radio inline">
+                <input type="radio" id="radio-5" name="note" value="note2" >
+                <label for="radio-5" class="radio-label">2</label>
+            </div>
+            <div class="radio inline">
+                <input type="radio" id="radio-7" name="note" value="note3" >
+                <label for="radio-7" class="radio-label">3</label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <input type="submit" class="btn text-dark update">
+        </div>
+
+    </div>
+</form>

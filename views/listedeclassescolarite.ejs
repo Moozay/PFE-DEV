@@ -34,27 +34,25 @@
 }
 
 var myCookies = getCookies();
-
-
     function callpage(id) {
       switch (id) {
         case 'premiere':
-          location.assign('/eleve?id=premiere')
+          location.assign('/viewelevescolarite?classe=premiere')
           break;
         case 'seconde':
-          location.assign('/eleve?id=seconde')
+          location.assign('/viewelevescolarite?classe=seconde')
           break;
         case 'terminale':
-          location.assign('/eleve?id=terminale')
+          location.assign('/viewelevescolarite?classe=terminale')
           break;
         case 'dashboard':
           if (myCookies.role == 'directeur') {
             location.assign('/accueildirecteur')
           }else if (myCookies.role == 'surveillant') {
-            location.assign('/accueilsurveillant')
+            location.assign('/accueilcomptable')
           }
-          break;
-    
+          break;  
+      
         default:
           break;
       }

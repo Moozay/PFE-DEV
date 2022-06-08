@@ -14,26 +14,24 @@
           <h1>CSA</h1>
           <input
             type="text"
-            name="email"
-            id="email"
-            placeholder="Entrer votre email"
+            name="codeapogee"
+            id="codeapogee"
+            placeholder="BF44949990"
             required
           />
           <input
-            type="password"
-            name="password"
-            id="password"
-            placeholder="Entrer votre mot de passe"
+            type="date"
+            name="datenaissance"
+            id="datenaissance"
             required
           />
-          <select name="role" id="role">
-            <option value="admin">ADMIN</option>
-            <option value="directeur">DIRECTEUR</option>
-            <option value="professeur">PROFESSEUR</option>
-            <option value="surveillant">SURVEILLANT</option>
-            <option value="comptable">COMPTABLE</option>
+          <select name="classe" id="classe">
+            <option value="premiere">PREMIERE</option>
+            <option value="seconde">SECONDE</option>
+            <option value="terminale">TERMINALE</option>
 
         </select>
+  
           <input type="submit" name="" value="Connexion" />
           <div class="error">
             <div class="email error"></div>
@@ -58,16 +56,16 @@
       passwordError.textContent = '';
       roleError.textContent = '';
       
-      const email = formData.getAll('email')[0];
-      const password = formData.getAll('password')[0];
-      const role = formData.getAll('role')[0];
-    const userData = {email,password,role}
+      const codeapogee = formData.getAll('codeapogee')[0];
+      const datenaissance = formData.getAll('datenaissance')[0];
+      const classe = formData.getAll('classe')[0];
+    const eleveData = {codeapogee,datenaissance,classe}
 
     try{
-      const res = await fetch('/login',{
+      const res = await fetch('/logintuteur',{
         method:"POST",
         headers:{ "Content-Type": "application/json"},
-        body:JSON.stringify(userData)
+        body:JSON.stringify(eleveData)
       })
 
       const  data = await res.json()
@@ -77,42 +75,13 @@
         passwordError.textContent = data.errors.password
         roleError.textContent = data.errors.role
       }
-      if (data.user) {
-        console.log(data.user)
-        switch (data.role) {
-        case "admin":
-            location.assign("/accueiladmin")
-                break;
-        case "directeur":
-        location.assign("/accueildirecteur");
-                break;
-        case "comptable":
-        location.assign("/accueilcomptable");
-                break;
-        case "surveillant":
-        location.assign("/accueilsurveillant");
-                break;
-
-        case "professeur":
-          location.assign('/accueilprof')
-            break;      
-        case "principal":
-
-            break; 
-        default:
-            break;
-    }
+      if (data.eleve) {
+        console.log(data.eleve)
+        location.assign('/accueiltuteur?classe='+data.classe)
       }
     }catch(err){
-      //console.log(err);
+      console.log(err);
     }
-
-
-    /* if(role == admi){
-      //window.location.href = "/accueiladmin"
-    }else{
-      window.location.href = "/accueildirecteur"
-    } */
     
 
     })

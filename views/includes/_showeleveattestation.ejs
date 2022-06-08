@@ -6,14 +6,12 @@
         <td><%= eleves[i].age %> </td>
         <td><%= classe%> </td>
         <td>
-            <a href="/archive-user?id=<%= eleves[i]._id%>&classe=<%=classe  %> " class="btn border-shadow update">
-                <span class="text-gradient"><i>ARCHIVE</i></span>
-            </a>
-        </td>
-        <td>
-            <a class="btn border-shadow delete" href="/viewappreciation?id=<%=eleves[i]._id  %> ">
+            <a onclick="window.open('/attestation?id=<%= eleves[i]._id%>&classe=<%=classe%>', '_blank').focus();" class="btn border-shadow update">
                 <span class="text-gradient"><i>VOIR</i></span>
-            </a> 
+            </a>
+            <a class="btn border-shadow delete" data-id=<%= eleves[i]._id%> >
+                <span class="text-gradient"><i>EDITER</i></span>
+            </a>
         </td>
     </tr>
     <% } %>

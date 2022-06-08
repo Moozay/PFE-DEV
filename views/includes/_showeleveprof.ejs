@@ -1,0 +1,73 @@
+<% for(var i = 0; i < eleves.length; i++) { %>
+    <tr>
+        <td><%= eleves[i].codeapogee %> </td>
+        <td><%= eleves[i].nom %> </td>
+        <td><%= eleves[i].prenom %> </td>
+        <% switch (user.Matiere) {
+            case 'mathematique': %>
+            <td><%= eleves[i].devoir.mathematique.note1%></td>
+            <td><%= eleves[i].devoir.mathematique.note2%></td>
+            <td><%= eleves[i].devoir.mathematique.note3%></td>
+            <td><%=classe%></td>
+          <% break;
+            case 'anglais': %>
+            <td><%= eleves[i].devoir.anglais.note1%></td>
+            <td><%= eleves[i].devoir.anglais.note2%></td>
+            <td><%= eleves[i].devoir.anglais.note3%></td>
+            <td><%=classe%></td>
+          <% break;
+            case 'francais': %>
+            <td><%= eleves[i].devoir.francais.note1%></td>
+            <td><%= eleves[i].devoir.francais.note2%></td>
+            <td><%= eleves[i].devoir.francais.note3%></td>
+            <td><%=classe%></td>
+          <% break;
+          case 'informatique': %>
+            <td><%= eleves[i].devoir.informatique.note1%></td>
+            <td><%= eleves[i].devoir.informatique.note2%></td>
+            <td><%= eleves[i].devoir.informatique.note3%></td>
+          <% break;
+          case 'chimie': %>
+            <td><%= eleves[i].devoir.chimie.note1%></td>
+            <td><%= eleves[i].devoir.chimie.note2%></td>
+            <td><%= eleves[i].devoir.chimie.note3%></td>
+            <td><%=classe%></td>
+          <% break;
+          case 'biologie': %>
+            <td><%= eleves[i].devoir.biologie.note1%></td>
+            <td><%= eleves[i].devoir.biologie.note2%></td>
+            <td><%= eleves[i].devoir.biologie.note3%></td>
+            <td><%=classe%></td>
+          <% break;
+          case 'philosophe': %>
+            <td><%= eleves[i].devoir.philosophe.note1%></td>
+            <td><%= eleves[i].devoir.philosophe.note2%></td>
+            <td><%= eleves[i].devoir.philosophe.note3%></td>
+            <td><%=classe%></td>
+          <% break;
+          case 'physique': %>
+            <td><%= eleves[i].devoir.physique.note1%></td>
+            <td><%= eleves[i].devoir.physique.note2%></td>
+            <td><%= eleves[i].devoir.physique.note3%></td>
+            <td><%=classe%></td>
+          <% break;
+          case 'conduite': %>
+            <td><%= eleves[i].devoir.conduite.note1%></td>
+            <td><%= eleves[i].devoir.conduite.note2%></td>
+            <td><%= eleves[i].devoir.conduite.note3%></td>
+            <td><%=classe%></td>
+          <% break;
+            default:
+            break; } %>
+        <td>
+            <a class="btn border-shadow delete" href="/addnote?id=<%=eleves[i]._id%>&classe=<%=classe%>&matiere=<%=user.Matiere%>">
+                <span class="text-gradient"><i>EDITER</i></span>
+            </a>
+        </td>
+        <td>
+            <a class="btn border-shadow delete" href="/viewappreciation?id=<%=eleves[i]._id%>&user=prof">
+                <span class="text-gradient"><i>AJOUTER</i></span>
+            </a>
+        </td>
+    </tr>
+    <% } %>

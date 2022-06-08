@@ -1,0 +1,63 @@
+<h1>Taux de réuissite globale</h1>
+<section id="circleBar">
+    <div class="containerp">
+      <div class="row">
+        <div class="col-md-4">
+          <div
+            class="round"
+            data-value="0.87"
+            data-size="200"
+            data-thickness="6"
+          >
+            <strong></strong>
+            <span
+              ><i class="fa fa-html5" aria-hidden="true"></i> Seconde</span
+            >
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div
+            class="round"
+            data-value="0.7"
+            data-size="200"
+            data-thickness="6"
+          >
+            <strong></strong>
+            <span
+              ><i class="fa fa-css3" aria-hidden="true"></i> Premiere</span
+            >
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div
+            class="round"
+            data-value="0.8"
+            data-size="200"
+            data-thickness="6"
+          >
+            <strong></strong>
+            <span
+              ><i class="fa fa-jsfiddle" aria-hidden="true"></i> Terminale</span
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-circle-progress/1.2.0/circle-progress.min.js"></script>
+    <script>
+        function Circlle(el) {
+  $(el)
+    .circleProgress({ fill: { color: "#092352" } })
+    .on("circle-animation-progress", function (event, progress, stepValue) {
+      $(this)
+        .find("strong")
+        .text(String(stepValue.toFixed(2)).substr(2) + "%");
+    });
+}
+Circlle(".round");
+
+    </script>
+    
+  </section>
+  

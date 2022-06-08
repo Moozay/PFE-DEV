@@ -31,6 +31,17 @@ const ProfSchema = new mongoose.Schema({
         required: true
     }
 })
+ProfSchema.statics.login = async function(email, password, role){
+    const user = await this.findOne({ Email: email });
+    if (user) {
+       const auth= await bcrypt.compare(password, user.password)
+       if (auth) {
+        return user
+       }
+       throw Error ('incorrect password')
+    }
+    throw Error ('incorrect email')
+}
 
 
 module.exports = mongoose.model('Prof', ProfSchema)

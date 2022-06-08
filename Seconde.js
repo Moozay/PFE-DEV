@@ -45,16 +45,24 @@ const SecondeSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    scolarite: {
+        tranche1:{
+            type: String,
+        },
+        tranche2: {
+            type: String,
+        }
+    },
     devoir: {
         mathematique:{
            note1 : {
-               type: String,
+               type: Number,
            },
            note2 : {
-               type: String, 
+               type: Number, 
            },
            note3 : {
-            type: String, 
+            type: Number, 
             },
             appreciation : {
                 type: String, 
@@ -178,5 +186,14 @@ const SecondeSchema = new mongoose.Schema({
     }
 
 })
+
+SecondeSchema.statics.login = async function(codeapogee, datenaissance){
+    const eleve = await this.findOne({ codeapogee: codeapogee, age: datenaissance });
+   console.log(eleve);
+    if (eleve) {
+        return eleve
+    }
+    throw Error ('incorrect email')
+}
 
 module.exports = mongoose.model('Seconde', SecondeSchema)

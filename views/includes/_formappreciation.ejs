@@ -1,0 +1,30 @@
+ <!-- form handling -->
+ <form onsubmit="return setAction(this)" method="POST" id="add_user" >
+    <div class="new_user">
+        <div class="form-group">
+            <label for="name" class="text-light">NOM DU PROFESSEUR</label>
+            <input type="hidden" name="id" value="">
+            <input type="text" name="nomprof" value="">
+        </div>
+        <div class="form-group">
+            <label for="name" class="text-light">MATIERE</label>
+            <input type="hidden" name="id" value="">
+            <input type="text" name="matiere" value="">
+        </div>
+        <div class="form-group">
+            <label for="name" class="text-light">Saisir Appreciation</label>
+            <input type="hidden" name="id" value="">
+            <input type="text" name="appreciation" value="">
+        </div>
+        <div class="form-group">
+            <label for="name" class="text-light">Date</label>
+            <input type="hidden" name="id" value="">
+            <input type="date" name="date" value="">
+        </div>
+
+        <div class="form-group">
+            <input type="submit" class="btn text-dark update">
+        </div>
+
+    </div>
+</form>

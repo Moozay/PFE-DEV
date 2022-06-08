@@ -83,4 +83,53 @@ body {
   
     position: relative;
   }
-  
+ /*www.codeithub.com*/
+ .container, .row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.col-md-4{
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: 20px;
+}
+#circleBar {
+  margin-top: 200px;
+  text-align: center;
+}
+#circleBar .round {
+  min-height: 255px;
+  margin-top: 30px;
+  position: relative;
+  margin-bottom: 20px;
+}
+#circleBar .round strong {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -50px;
+  transform: translate(-50%);
+  font-size: 40px;
+  color: #3f3a3a;
+  font-weight: 100;
+}
+#circleBar span {
+  display: block;
+  color: #999;
+  font-size: 16px;
+  margin-top: 10px;
+}
+#circleBar span i {
+  color: #092352;
+  font-size: 22px;
+  margin-right: 6px;
+}
+section button:hover {
+  background-color: #092352;
+}
+.btn:hover {
+  color: white;
+}
+ 
