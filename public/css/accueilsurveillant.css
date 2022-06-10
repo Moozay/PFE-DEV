@@ -165,6 +165,17 @@ p {
   background-color: lightskyblue;
 }
 /*www.codeithub.com*/
+.container, .row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.col-md-4{
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: 20px;
+}
 #circleBar {
   margin-top: 200px;
   text-align: center;

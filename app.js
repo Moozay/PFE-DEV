@@ -1028,17 +1028,39 @@ app.get('/convocation',mainAuth,(req,res)=>{
     })
     
 })
-app.get('/bulletin',mainAuth,(req,res)=>{
-    let error = req.query.error
-    User.find({}).then((users)=>{
-        res.render("bulletin");
-    }).catch((e)=>{
-        console.log(e);
-        return null;
-    })
-    
-})
+app.get('/viewnote?',(req,res)=>{
+    const classe = req.query.classe
+    const id = req.query.id
 
+    switch (classe) {
+        case 'premiere':
+            Premiere.findById(id).then((eleve)=>{
+                res.render("viewnote", {eleve, classe});
+            }).catch((e)=>{
+                console.log(e);
+                return null;
+            }) 
+            break;
+        case 'seconde':
+            Seconde.findById(id).then((eleve)=>{
+                res.render("viewnote", {eleve, classe});
+            }).catch((e)=>{
+                console.log(e);
+                return null;
+            }) 
+                break;
+        case 'terminale':
+            Terminale.findById(id).then((eleve)=>{
+                res.render("viewnote", {eleve, classe});
+            }).catch((e)=>{
+                console.log(e);
+                return null;
+            }) 
+            break;
+        default:
+            break;
+    }
+})
 app.get('/viewprof',(req,res)=>{
     let error = req.query.error
     Prof.find({}).then((users)=>{
@@ -1096,6 +1118,38 @@ app.get('/eleve?',(req,res)=>{
         case 'terminale':
             Terminale.find({}).then((eleves)=>{
                 res.render("vieweleves", {eleves, classe});
+            }).catch((e)=>{
+                console.log(e);
+                return null;
+            }) 
+            break;
+        default:
+            break;
+    }
+})
+
+app.get('/bulletins?',(req,res)=>{
+    const classe = req.query.id
+    switch (req.query.id) {
+        case 'premiere':
+            Premiere.find({}).then((eleves)=>{
+                res.render("bulletins", {eleves, classe});
+            }).catch((e)=>{
+                console.log(e);
+                return null;
+            }) 
+            break;
+        case 'seconde':
+            Seconde.find({}).then((eleves)=>{
+                res.render("bulletins", {eleves, classe});
+            }).catch((e)=>{
+                console.log(e);
+                return null;
+            }) 
+                break;
+        case 'terminale':
+            Terminale.find({}).then((eleves)=>{
+                res.render("bulletins", {eleves, classe});
             }).catch((e)=>{
                 console.log(e);
                 return null;
@@ -1173,15 +1227,14 @@ app.get('/viewelevesprof?',(req,res)=>{
     }
 })
 
-app.get('/viewelevetuteur?',(req,res)=>{
+app.get('/bulletineleve?',(req,res)=>{
     const classe = req.query.classe
     const id = req.query.id
 
     switch (classe) {
         case 'premiere':
             Premiere.findById(id).then((eleve)=>{
-                res.render("viewelevetuteur", {eleve, classe});
-                console.log(Object.keys(eleves[0].devoir));
+                res.render("bulletineleve", {eleve, classe});
             }).catch((e)=>{
                 console.log(e);
                 return null;
@@ -1189,7 +1242,7 @@ app.get('/viewelevetuteur?',(req,res)=>{
             break;
         case 'seconde':
             Seconde.findById(id).then((eleve)=>{
-                res.render("viewelevetuteur", {eleve, classe});
+                res.render("bulletineleve", {eleve, classe});
             }).catch((e)=>{
                 console.log(e);
                 return null;
@@ -1197,7 +1250,7 @@ app.get('/viewelevetuteur?',(req,res)=>{
                 break;
         case 'terminale':
             Terminale.findById(id).then((eleve)=>{
-                res.render("viewelevetuteur", {eleve, classe});
+                res.render("bulletineleve", {eleve, classe});
             }).catch((e)=>{
                 console.log(e);
                 return null;

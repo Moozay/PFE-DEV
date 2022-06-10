@@ -56,26 +56,26 @@
                         <tr>
                             <th>CONDUITE</th>
                             <td><%=eleve.devoir.conduite.note1 %> </td>
-                            <td><%=eleve.devoir.conduite.note1 %> </td>
-                            <td><%=eleve.devoir.conduite.note1 %> </td>
+                            <td><%=eleve.devoir.conduite.note2 %> </td>
+                            <td><%=eleve.devoir.conduite.note3 %> </td>
                         </tr>
                         <tr>
                             <th>PHILOSOPHIE</th>
                             <td><%=eleve.devoir.philosophe.note1 %> </td>
-                            <td><%=eleve.devoir.philosophe.note1 %> </td>
-                            <td><%=eleve.devoir.philosophe.note1 %> </td>
+                            <td><%=eleve.devoir.philosophe.note2 %> </td>
+                            <td><%=eleve.devoir.philosophe.note3 %> </td>
                         </tr>
                         <tr>
                             <th>INFORMATIQUE</th>
                             <td><%=eleve.devoir.informatique.note1 %> </td>
-                            <td><%=eleve.devoir.informatique.note1 %> </td>
-                            <td><%=eleve.devoir.informatique.note1 %> </td>
+                            <td><%=eleve.devoir.informatique.note2 %> </td>
+                            <td><%=eleve.devoir.informatique.note3 %> </td>
                         </tr>
                         <tr>
                             <th>BIOLOGIE</th>
                             <td><%=eleve.devoir.biologie.note1 %> </td>
-                            <td><%=eleve.devoir.biologie.note1 %> </td>
-                            <td><%=eleve.devoir.biologie.note1 %> </td>
+                            <td><%=eleve.devoir.biologie.note2 %> </td>
+                            <td><%=eleve.devoir.biologie.note3 %> </td>
                         </tr>
                     </thead>
                 </table>
@@ -103,18 +103,19 @@ var myCookies = getCookies();
 console.log(myCookies.role);
 
 function link() {
-    location.assign('/accueiltuteur?classe=<%=classe%>')
-    /* switch (myCookies.role) {
+    switch (myCookies.role) {
         case 'surveillant':
             location.assign('/accueilsurveillant')
             break;
         case 'directeur':
             location.assign('/accueildirecteur')
             break;
-    
+        case 'tuteur':
+            location.assign('/accueiltuteur')
+            break; 
         default:
             break;
-    } */
+    }
 }
 </script>
 

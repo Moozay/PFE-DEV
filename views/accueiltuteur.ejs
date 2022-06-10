@@ -18,7 +18,7 @@
       <div class="side">
         <h2>Administration</h2>
         <ul>
-          <li><a href="/viewelevetuteur?id=<%=user._id %>&classe=<%=classe %> ">Note d'eleve</a></li>
+          <li><a href="/viewnote?id=<%=user._id %>&classe=<%=classe %> ">Note d'eleve</a></li>
           <li><a href="/viewappreciationtuteur?id=<%= user._id %>&classe=<%=classe  %>  ">Des Appreciation</a></li>
           
         </ul>
@@ -27,17 +27,6 @@
       </div>
       <div class="body">
         <%- include('includes/_progressbar') %>
-        <div
-          onmouseover="showmore()"
-          onmouseout="normalshow()"
-          class="flex-container"
-        >
-          <div id="inscrit">
-            Nombre total des inscrits<br /><span>1234</span>
-          </div>
-          <div id="girls">Filles <br /><span>720</span></div>
-          <div id="boys">Garçon<br /><span>514</span></div>
-        </div>
       </div>
       <div class="footer">© 2022 copyright</div>
     </div>
