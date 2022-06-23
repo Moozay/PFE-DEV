@@ -18,6 +18,19 @@ h1 {
 span {
   color: blue;
 }
+.head-flex {
+  display: flex;
+  flex-wrap: wrap;
+}
+#logo {
+  margin-top: 100px;
+  max-width: 130px;
+  max-height: 130px;
+  display: block;
+  margin-left: 42%;
+  justify-content: center;
+  width: 100%;
+}
 p {
   font-size: large;
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;

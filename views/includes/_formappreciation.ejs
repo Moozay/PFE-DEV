@@ -4,12 +4,12 @@
         <div class="form-group">
             <label for="name" class="text-light">NOM DU PROFESSEUR</label>
             <input type="hidden" name="id" value="">
-            <input type="text" name="nomprof" value="">
+            <input type="text" name="nomprof" value="<%=user.Firstname %>  <%=user.Lastname  %>  " readonly>
         </div>
         <div class="form-group">
             <label for="name" class="text-light">MATIERE</label>
             <input type="hidden" name="id" value="">
-            <input type="text" name="matiere" value="">
+            <input type="text" name="matiere" value="<%=user.Matiere  %> " readonly>
         </div>
         <div class="form-group">
             <label for="name" class="text-light">Saisir Appreciation</label>

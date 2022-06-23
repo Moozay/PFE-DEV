@@ -1,0 +1,16 @@
+<% for(var i = 0; i < factures.length; i++) { %>
+    <tr>
+        <td><%= factures[i].Date %> </td>
+        <td><%= factures[i].Reference %> </td>
+        <td><%= factures[i].Nomsociete %> </td>
+        <td><%= factures[i].Prixtotal %> </td>
+        <td>
+            <a href="/update-user?id=<%= factures[i].Reference%>" class="btn border-shadow update">
+                <span class="text-gradient"><i>VOIR</i></span>
+            </a>
+            <a class="btn border-shadow delete" href="/update-user?id=<%= factures[i].Reference%>" >
+                <span class="text-gradient"><i>ARCHIVER</i></span>
+            </a>
+        </td>
+    </tr>
+    <% } %>

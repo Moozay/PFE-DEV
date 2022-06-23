@@ -12,21 +12,21 @@
     <page size="A4">
       <div class="head-flex">
         <img id="logo" alt="logo" src="/images/logo.png" />
-        <p id="Info-ecole">
-          lycée privée Ain chock <br />Ain chock tarik el jadida 200100<br />Tel:060000000
-          Email:lac@gmail.com
-        </p>
       </div>
+      <p id="Info-ecole">
+        Lycée Privé Ain chock <br />   Ain chock tarik el jadida 200100   <br />Tel:060000000
+        Email:lac@gmail.com
+      </p>
       <h2>BULLETIN DE NOTES DU <span>1er Trimestre</span></h2>
       <br />
       <h5>Année scolaire:<span>2021-2022</span></h5>
       <div class="info-eleve">
         <div class="info-name">
-          <p>Nom:<span id="nnom"><%=eleve.nom  %> </span></p>
-          <p>Prénom:<span><%=eleve.prenom %> </span></p>
+          <p>Nom :<span id="nnom"><%=eleve.nom  %> </span></p>
+          <p>Prénom :<span><%=eleve.prenom %> </span></p>
         </div>
         <div class="info-section">
-          <p>Section:<span><%=classe  %>  C</span></p>
+          <p>Classe :<span><%=classe  %> </span></p>
         </div>
         <div class="photo-eleve">
           
@@ -37,72 +37,119 @@
         <table>
           <tr id="th">
             <th>Matières</th>
+            <th>Coeffients</th>
             <th>1er Devoir</th>
             <th>2éme Devoir</th>
             <th>3éme Devoir</th>
+            <th>Moyenne Matière</th>
           
 
           </tr>
           <tr>
             <th>MATHEMATIQUES</th>
+            <td><%= coeffients[0]  %> </td>
             <td><%=eleve.devoir.mathematique.note1 %> </td>
             <td><%=eleve.devoir.mathematique.note2 %> </td>
             <td><%=eleve.devoir.mathematique.note3 %> </td>
+            <td><%=arr[0] %> </td>
     
         </tr>
         <tr>
             <th>ANGLAIS</th>
+            <td><%= coeffients[1]  %> </td>
             <td><%=eleve.devoir.anglais.note1 %> </td>
             <td><%=eleve.devoir.anglais.note2 %> </td>
             <td><%=eleve.devoir.anglais.note3 %> </td>
+            <td><%=arr[1] %> </td>
         </tr>
         <tr>
             <th>FRANCAIS</th>
+            <td><%= coeffients[2]  %> </td>
             <td><%=eleve.devoir.francais.note1 %> </td>
             <td><%=eleve.devoir.francais.note2 %> </td>
             <td><%=eleve.devoir.francais.note3 %> </td>
+            <td><%=arr[2] %> </td>
         </tr>
         <tr>
             <th>CHIMIE</th>
+            <td><%= coeffients[3]  %> </td>
             <td><%=eleve.devoir.chimie.note1 %> </td>
             <td><%=eleve.devoir.chimie.note2 %> </td>
             <td><%=eleve.devoir.chimie.note3 %> </td>
+            <td><%=arr[3] %> </td>
         </tr>
         <tr>
             <th>PHYSIQUE</th>
+            <td><%= coeffients[4]  %> </td>
             <td><%=eleve.devoir.physique.note1 %> </td>
             <td><%=eleve.devoir.physique.note2 %> </td>
             <td><%=eleve.devoir.physique.note3 %> </td>
+            <td><%=arr[4] %> </td>
         </tr>
         <tr>
             <th>CONDUITE</th>
+            <td><%= coeffients[5]  %> </td>
             <td><%=eleve.devoir.conduite.note1 %> </td>
             <td><%=eleve.devoir.conduite.note2 %> </td>
             <td><%=eleve.devoir.conduite.note3 %> </td>
+            <td><%=arr[5] %> </td>
         </tr>
         <tr>
             <th>PHILOSOPHIE</th>
+            <td><%= coeffients[6]  %> </td>
             <td><%=eleve.devoir.philosophe.note1 %> </td>
             <td><%=eleve.devoir.philosophe.note2 %> </td>
             <td><%=eleve.devoir.philosophe.note3 %> </td>
+            <td><%=arr[6] %> </td>
         </tr>
         <tr>
             <th>INFORMATIQUE</th>
+            <td><%= coeffients[7]  %> </td>
             <td><%=eleve.devoir.informatique.note1 %> </td>
             <td><%=eleve.devoir.informatique.note2 %> </td>
             <td><%=eleve.devoir.informatique.note3 %> </td>
+            <td><%=arr[7] %> </td>
         </tr>
         <tr>
             <th>BIOLOGIE</th>
+            <td><%= coeffients[8]  %> </td>
             <td><%=eleve.devoir.biologie.note1 %> </td>
             <td><%=eleve.devoir.biologie.note2 %> </td>
             <td><%=eleve.devoir.biologie.note3 %> </td>
+            <td><%=arr[8] %> </td>
         </tr>
+        <tr>
+          <th>MOYENNE GENERAL</th>
+          <td>-</td>
+          <td>-</td>
+          <td>-</td>
+          <td>-</td>
+          <td><%=moyenne  %> </td>
+      </tr>
   
         </table>
       </div>
       <h4>Le Directeur</h4>
     </page>
     <div class="footer">© 2022 copyright</div>
+    <script>
+      arr=[]
+      arr.push(
+                    '<%=(+eleve.devoir.mathematique.note1)+(+eleve.devoir.mathematique.note2)+(+eleve.devoir.mathematique.note3)%>',
+                    '<%=(+eleve.devoir.anglais.note1)+(+eleve.devoir.anglais.note2)+(+eleve.devoir.anglais.note3)%>',
+                    '<%=(+eleve.devoir.francais.note1)+(+eleve.devoir.francais.note2)+(+eleve.devoir.francais.note3)%>',
+                    '<%=(+eleve.devoir.chimie.note1)+(+eleve.devoir.chimie.note2)+(+eleve.devoir.chimie.note3)%>',
+                    '<%=(+eleve.devoir.physique.note1)+(+eleve.devoir.physique.note2)+(+eleve.devoir.physique.note3)%>',
+                    '<%=(+eleve.devoir.conduite.note1)+(+eleve.devoir.conduite.note2)+(+eleve.devoir.conduite.note3)%>',
+                    '<%=(+eleve.devoir.philosophe.note1)+(+eleve.devoir.philosophe.note2)+(+eleve.devoir.philosophe.note3)%>',
+                    '<%=(+eleve.devoir.informatique.note1)+(+eleve.devoir.informatique.note2)+(+eleve.devoir.informatique.note3)%>',
+                    '<%=(+eleve.devoir.biologie.note1)+(+eleve.devoir.biologie.note2)+(+eleve.devoir.biologie.note3)%>'
+                )
+     
+      for (let i = 0; i < arr.length; i++) {
+        arr[i] = parseFloat(arr[i])
+      }
+      console.log(arr)
+    </script>
   </body>
 </html>

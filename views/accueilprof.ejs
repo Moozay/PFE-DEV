@@ -19,12 +19,13 @@
       <div class="side">
         <h2>Administration</h2>
         <ul>
-          <li><a href="/viewstaffs">Le Staff Administrative</a></li>
+          <li><a href="/viewstaffs">Les Staffs Administratif</a></li>
           <li><a href="/viewelevesprof?classe=<%= user.Classe %>&matiere=<%= user.Matiere %>  ">Liste de élèves</a></li>
           
         </ul>
-        <img src="/images/RR.jpg" alt="IMAGE POUR LE DGR" />
-        <h2><a href="calendrier.html">Calendrier</a></h2>
+        <img src="/images/logo.png" alt="IMAGE POUR LE DGR" />
+        <h2><a onclick="window.open('/calendrier', '_blank').focus();">Calendrier</a></h2>
+
       </div>
       <div class="body">
         <%- include('includes/_progressbar') %>

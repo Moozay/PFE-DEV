@@ -20,16 +20,16 @@
       <div class="side">
         <h2>Administration</h2>
         <ul>
-          <li><a href="/staff">Le Staff Administrative</a></li>
+          <li><a href="/staff">Les Staffs Administratif</a></li>
         </ul>
         <h2>Comptabilité</h2>
         <ul>
-          <li><a href="#">Les Factures</a></li>
-          <li><a href="#">Les Dépenses </a></li>
+          <li><a href="viewfacture">Facture des dépenses</a></li>
           <li><a href="listedeclassescolarite">Scolarité</a></li>
         </ul>
         <img src="/images/RR.jpg" alt="IMAGE POUR LE DGR" />
-        <h2><a href="index.html">Calendrier</a></h2>
+        <h2><a onclick="window.open('/calendrier', '_blank').focus();">Calendrier</a></h2>
+
       </div>
       <div class="body">
         <%- include('includes/_progressbar') %>

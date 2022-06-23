@@ -9,10 +9,11 @@
     <div class="flex-print-btn">
       <button onclick="window.print()" type="button">Imprimer</button>
     </div>
-
     <page size="A4">
-      <img alt="logo" src="/images/logo.png" />
-      <h1>Attestation D'inscription</h1>
+      <div class="head-flex">
+        <img id="logo" alt="logo" src="/images/logo.png" />
+      </div>
+      <h1>Attestation d'inscription</h1>
       <p>
         Le lycée ain chock atteste que l'élève
         <span><%= eleve.nom  %>  <%=eleve.prenom  %> </span> est inscrit régulierement en classe de

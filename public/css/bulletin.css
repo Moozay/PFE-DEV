@@ -14,12 +14,18 @@ page[size="A4"] {
   flex-wrap: wrap;
 }
 #logo {
-  margin-top: 15px;
-  margin-right: 230px;
+  margin-top: 30px;
+  max-width: 130px;
+  max-height: 130px;
+  display: block;
+  margin-left: 42%;
+  justify-content: center;
+  width: 100%;
 }
 #Info-ecole {
   text-align: center;
   margin-top: 20px;
+  margin-right: 1px;
 }
 h2 {
   margin-top: 50px;
@@ -72,7 +78,7 @@ table tr:hover {
   margin-left: 15px;
 }
 span {
-  color: lightblue;
+  color: rgb(6, 7, 7);
 }
 h4 {
   margin-top: 50px;

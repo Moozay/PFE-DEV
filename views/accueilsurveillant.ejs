@@ -18,8 +18,8 @@
       <div class="side">
         <h2>Administration</h2>
         <ul>
-          <li><a href="/viewstaffs">Le Staff Administrative</a></li>
-          <li><a href="/listedeclasse">Liste de élèves</a></li>
+          <li><a href="/staff">Les Staffs Administratif</a></li>
+          <li><a href="/listedeclasse">Liste d'élèves</a></li>
           <li><a href="/listeclassebulletins">Les bulletins</a></li>
           <li>
             <a href="attestationconvocationaccueil"
@@ -27,14 +27,15 @@
             >
           </li>
         </ul>
-        <h2>Comptabilité</h2>
+       <!--  <h2>Comptabilité</h2>
         <ul>
           <li><a href="#">Les Factures</a></li>
           <li><a href="#">Listes de élèves</a></li>
-        </ul>
-        <h2><a href="#">Statistique Du Lycée</a></h2>
+        </ul> -->
+        <h2><a href="#">Statistique du Lycée</a></h2>
         <img src="/images/RR.jpg" alt="IMAGE POUR LE DGR" />
-        <h2><a href="calendrier.html">Calendrier</a></h2>
+        <h2><a onclick="window.open('/calendrier', '_blank').focus();">Calendrier</a></h2>
+        
       </div>
       <div class="body">
         <%- include('includes/_progressbar') %>

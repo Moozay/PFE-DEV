@@ -334,6 +334,19 @@ app.post('/addappreciation?', async (req,res)=>{
     
 });
 
+app.post('/addfacture', async (req,res)=>{
+    try {
+        const id = req.query.id
+        const url = '/viewfacture'
+        await addFacture(req)
+        console.log("Facture updated");
+        res.redirect(url)
+    } catch (error) {
+        res.redirect('/addnote')
+    }
+    
+});
+
 async function addUser(req){
     try{
         const salt = await bcrypt.genSalt()
@@ -379,6 +392,20 @@ async function addAppreciation(req){
             Matiere: req.body.matiere,
             Ideleve: req.query.id,
             Appreciation: req.body.appreciation,
+            Date: req.body.date
+        })
+    } catch (error) {
+        console.log(error.message);
+    }
+}
+
+async function addFacture(req){
+    try {
+        await Facture.create({
+            Nomsociete: req.body.nomsociete,
+            Reference: req.body.reference,
+            Prixtotal: req.body.prixtotal,
+            Designation: req.body.designation,
             Date: req.body.date
         })
     } catch (error) {
@@ -1096,6 +1123,19 @@ app.get('/viewappreciationtuteur?',(req,res)=>{
     
 })
 
+app.get('/viewfacture',(req,res)=>{
+    
+    Facture.find({}).then((factures)=>{
+        res.render('viewfacture', {factures})
+
+    }).catch((e)=>{
+        console.log(e);
+        return null;
+    })
+    
+})
+
+
 app.get('/eleve?',(req,res)=>{
     const classe = req.query.id
     switch (req.query.id) {
@@ -1200,7 +1240,6 @@ app.get('/viewelevesprof?',(req,res)=>{
         case 'Premiere':
             Premiere.find({}).then((eleves)=>{
                 res.render("viewelevesprof", {eleves, classe});
-                console.log(Object.keys(eleves[0].devoir));
             }).catch((e)=>{
                 console.log(e);
                 return null;
@@ -1230,11 +1269,34 @@ app.get('/viewelevesprof?',(req,res)=>{
 app.get('/bulletineleve?',(req,res)=>{
     const classe = req.query.classe
     const id = req.query.id
+    const coeffients = [4,2,3,2,4,1,3,2,4]
+    let arr=[]
+    let sommecoef=0
+    let sommemoyenne=0
+    
 
     switch (classe) {
         case 'premiere':
             Premiere.findById(id).then((eleve)=>{
-                res.render("bulletineleve", {eleve, classe});
+                arr.push(
+                    (+eleve.devoir.mathematique.note1)+(+eleve.devoir.mathematique.note2)+(+eleve.devoir.mathematique.note3),
+                    (+eleve.devoir.anglais.note1)+(+eleve.devoir.anglais.note2)+(+eleve.devoir.anglais.note3),
+                    (+eleve.devoir.francais.note1)+(+eleve.devoir.francais.note2)+(+eleve.devoir.francais.note3),
+                    (+eleve.devoir.chimie.note1)+(+eleve.devoir.chimie.note2)+(+eleve.devoir.chimie.note3),
+                    (+eleve.devoir.physique.note1)+(+eleve.devoir.physique.note2)+(+eleve.devoir.physique.note3),
+                    (+eleve.devoir.conduite.note1)+(+eleve.devoir.conduite.note2)+(+eleve.devoir.conduite.note3),
+                    (+eleve.devoir.philosophe.note1)+(+eleve.devoir.philosophe.note2)+(+eleve.devoir.philosophe.note3),
+                    (+eleve.devoir.informatique.note1)+(+eleve.devoir.informatique.note2)+(+eleve.devoir.informatique.note3),
+                    (+eleve.devoir.biologie.note1)+(+eleve.devoir.biologie.note2)+(+eleve.devoir.biologie.note3)
+                )
+                            
+                for (let i = 0; i < arr.length; i++) {
+                    arr[i] = ((parseFloat(arr[i])/3)*coeffients[i]).toFixed(2)
+                    sommecoef = sommecoef + coeffients[i]
+                    sommemoyenne = sommemoyenne + parseFloat(arr[i]); 
+                }
+                let moyenne = (sommemoyenne/sommecoef).toFixed(2)
+                res.render("bulletineleve", {eleve, classe,coeffients,arr,moyenne});
             }).catch((e)=>{
                 console.log(e);
                 return null;
@@ -1242,7 +1304,25 @@ app.get('/bulletineleve?',(req,res)=>{
             break;
         case 'seconde':
             Seconde.findById(id).then((eleve)=>{
-                res.render("bulletineleve", {eleve, classe});
+                arr.push(
+                    (+eleve.devoir.mathematique.note1)+(+eleve.devoir.mathematique.note2)+(+eleve.devoir.mathematique.note3),
+                    (+eleve.devoir.anglais.note1)+(+eleve.devoir.anglais.note2)+(+eleve.devoir.anglais.note3),
+                    (+eleve.devoir.francais.note1)+(+eleve.devoir.francais.note2)+(+eleve.devoir.francais.note3),
+                    (+eleve.devoir.chimie.note1)+(+eleve.devoir.chimie.note2)+(+eleve.devoir.chimie.note3),
+                    (+eleve.devoir.physique.note1)+(+eleve.devoir.physique.note2)+(+eleve.devoir.physique.note3),
+                    (+eleve.devoir.conduite.note1)+(+eleve.devoir.conduite.note2)+(+eleve.devoir.conduite.note3),
+                    (+eleve.devoir.philosophe.note1)+(+eleve.devoir.philosophe.note2)+(+eleve.devoir.philosophe.note3),
+                    (+eleve.devoir.informatique.note1)+(+eleve.devoir.informatique.note2)+(+eleve.devoir.informatique.note3),
+                    (+eleve.devoir.biologie.note1)+(+eleve.devoir.biologie.note2)+(+eleve.devoir.biologie.note3)
+                )
+                            
+                for (let i = 0; i < arr.length; i++) {
+                    arr[i] = ((parseFloat(arr[i])/3)*coeffients[i]).toFixed(2)
+                    sommecoef = sommecoef + coeffients[i]
+                    sommemoyenne = sommemoyenne + parseFloat(arr[i]); 
+                }
+                let moyenne = (sommemoyenne/sommecoef).toFixed(2)
+                res.render("bulletineleve", {eleve, classe,coeffients,arr,moyenne});
             }).catch((e)=>{
                 console.log(e);
                 return null;
@@ -1250,7 +1330,25 @@ app.get('/bulletineleve?',(req,res)=>{
                 break;
         case 'terminale':
             Terminale.findById(id).then((eleve)=>{
-                res.render("bulletineleve", {eleve, classe});
+                arr.push(
+                    (+eleve.devoir.mathematique.note1)+(+eleve.devoir.mathematique.note2)+(+eleve.devoir.mathematique.note3),
+                    (+eleve.devoir.anglais.note1)+(+eleve.devoir.anglais.note2)+(+eleve.devoir.anglais.note3),
+                    (+eleve.devoir.francais.note1)+(+eleve.devoir.francais.note2)+(+eleve.devoir.francais.note3),
+                    (+eleve.devoir.chimie.note1)+(+eleve.devoir.chimie.note2)+(+eleve.devoir.chimie.note3),
+                    (+eleve.devoir.physique.note1)+(+eleve.devoir.physique.note2)+(+eleve.devoir.physique.note3),
+                    (+eleve.devoir.conduite.note1)+(+eleve.devoir.conduite.note2)+(+eleve.devoir.conduite.note3),
+                    (+eleve.devoir.philosophe.note1)+(+eleve.devoir.philosophe.note2)+(+eleve.devoir.philosophe.note3),
+                    (+eleve.devoir.informatique.note1)+(+eleve.devoir.informatique.note2)+(+eleve.devoir.informatique.note3),
+                    (+eleve.devoir.biologie.note1)+(+eleve.devoir.biologie.note2)+(+eleve.devoir.biologie.note3)
+                )
+                            
+                for (let i = 0; i < arr.length; i++) {
+                    arr[i] = ((parseFloat(arr[i])/3)*coeffients[i]).toFixed(2)
+                    sommecoef = sommecoef + coeffients[i]
+                    sommemoyenne = sommemoyenne + parseFloat(arr[i]); 
+                }
+                let moyenne = (sommemoyenne/sommecoef).toFixed(2)
+                res.render("bulletineleve", {eleve, classe,coeffients,arr,moyenne});
             }).catch((e)=>{
                 console.log(e);
                 return null;
@@ -1311,6 +1409,9 @@ app.get('/viewmatiere',mainAuth,(req,res)=>{
 app.get('/add_user',(req,res)=>{
     res.render("add_user")
 })
+app.get('/add_facture',(req,res)=>{
+    res.render("add_facture")
+})
 
 app.get('/add_staff',(req,res)=>{
     res.render("add_staff")
@@ -1331,6 +1432,10 @@ app.get('/add_eleve',(req,res)=>{
 app.get('/addnote',(req,res)=>{
     
     res.render("addnote")
+})
+app.get('/calendrier',(req,res)=>{
+    
+    res.render("calendrier")
 })
 app.get('/addscolarite',(req,res)=>{
     const classe = req.query.classe

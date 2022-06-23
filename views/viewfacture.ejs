@@ -8,8 +8,8 @@
     <main id="site-main">
         <div class="container">
             <div class="box-nav d-flex justify-between">
-                <a href="/add_eleve" class="border-shadow">
-                    <span class="text-gradient">Ajoute eleve<i class="fas fa-user"></i></span>
+                <a href="/add_facture" class="border-shadow">
+                    <span class="text-gradient">NOUVEAU FACTURE <i class="fas fa-user"></i></span>
                 </a>
             </div>
 
@@ -18,24 +18,21 @@
                 <table class="table">
                     <thead class="thead-dark">
                         <tr>
-                            <th>Code Apogee</th>
-                            <th>First name</th>
-                            <th>Last name</th>
-                            <th>Date de Naissance</th>
-                            <th>Classe</th>
+                            <th>DATE</th>
+                            <th>REFERENCE</th>
+                            <th>NOM DE L'ENTREPRISE</th>
+                            <th>PRIX TOTAL</th>
                             <th>Action</th>
-                            <th>Note</th> 
-                            <th>Appreciation</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <%- include('includes/_showeleve') %>
+                        <%- include('includes/_showfacture') %>
                     </tbody>
                 </table>
             </form>
             <div class="box-nav d-flex justify-between">
-                <a class="border-shadow" onclick="link()">
-                    <span class="text-gradient">Liste de classe<i class="fas fa-user"></i></span>
+                <a onclick="link()" class="border-shadow">
+                    <span class="text-gradient">DASHBOARD <i class="fas fa-user"></i></span>
                 </a>
             </div>
         </div>
@@ -56,20 +53,21 @@ var myCookies = getCookies();
 console.log(myCookies.role);
 
 function link() {
-    location.assign('/listedeclasse')
-    /* switch (myCookies.role) {
-        case 'surveillant':
-            location.assign('/accueilsurveillant')
+    switch (myCookies.role) {
+        case 'comptable':
+            location.assign('/accueilcomptable')
             break;
         case 'directeur':
             location.assign('/accueildirecteur')
             break;
+        
     
         default:
             break;
-    } */
+    }
 }
 </script>
+
 
 <!-- include footer -->
 <%- include('includes/_footeradmin') %>

@@ -4,7 +4,8 @@
         <div class="form-group">
             <label for="name" class="text-light">Saisir Note</label>
             <input type="hidden" name="id" value="">
-            <input type="number" name="notevalue" value="">
+            <input type="number" name="notevalue" value="" max="20" min="0" oninvalid="this.setCustomValidity('Max = 20 et Min = 0')"
+            oninput="this.setCustomValidity('')">
         </div>
         <div class="form-group">
             <label for="note" class="text-light">Devoir</label>

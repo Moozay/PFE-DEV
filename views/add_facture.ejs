@@ -1,0 +1,59 @@
+
+<!-- include header -->
+<%- include('includes/_headeradmin') %>
+<!-- /include header -->
+
+  <!-- Main Site -->
+  <main id="site-main">
+    <div class="container">
+        <div class="box-nav d-flex justify-between">
+           <div class="filter">
+               <a href='/viewfacture'><i class="fas fa-angle-double-left"></i> LISTE DE FACTURES</a>
+           </div>
+        </div>
+        <div class="form-title text-center">
+            <h2 >NOUVEAU FACTURE</h2>
+        </div>
+        <!-- add user form -->
+        <form action="/addfacture" method="POST" id="add_user">
+            <div class="new_user">
+                <div class="form-group">
+                    <label for="name" class="text-light">Reference</label>
+                    <input type="hidden" name="id" value="">
+                    <input type="text" name="reference" value="" placeholder="10390940">
+                </div>
+                <div class="form-group">
+                    <label for="name" class="text-light">Nom de Societe</label>
+                    <input type="hidden" name="id" value="">
+                    <input type="text" name="nomsociete" value="" placeholder="Microsoft" required>
+                </div>
+                <div class="form-group">
+                    <label for="age" class="text-light">Designation</label>
+                    <textarea name="designation" id="" cols="30" rows="10" required>
+                    </textarea>
+                </div>
+               
+                <div class="form-group">
+                    <label for="name" class="text-light">Prix Totale</label>
+                    <input type="hidden" name="id" value="">
+                    <input type="text" name="prixtotal" value="" placeholder="200000" required>
+                </div>
+                <div class="form-group">
+                    <label for="name" class="text-light">Date de facture</label>
+                    <input type="hidden" name="id" value="">
+                    <input type="date" name="date" value=""required>
+                </div>
+                <div class="form-group">
+                    <input type="submit" class="btn text-dark update">
+                </div>
+        
+            </div>
+        </form>
+       
+    </div>
+</main>
+<!-- /Main Site -->
+
+<!-- include footer -->
+<%- include('includes/_footeradmin') %>
+<!-- /include footer -->

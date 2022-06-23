@@ -8,11 +8,11 @@
     <div class="container">
         <div class="box-nav d-flex justify-between">
            <div class="filter">
-               <a href="/viewelevesprof?classe=<%= user.Classe %>&matiere=<%= user.Matiere %>"><i class="fas fa-angle-double-left"></i>Liste d'eleves</a>
+               <a onclick="link()"><i class="fas fa-angle-double-left"></i>Liste d'eleves</a>
            </div>
         </div>
         <div class="form-title text-center">
-            <h2 class="text-dark">SAISIR APPRECIATION D'ELEVE</h2>
+            <h2> SAISIR APPRECIATION D'ELEVE</h2>
         </div>
 
         <!-- add user form -->
@@ -34,6 +34,33 @@
     console.log(form.action);
     return true;
     }
+
+    var getCookies = function(){
+  var pairs = document.cookie.split(";");
+  var cookies = {};
+  for (var i=0; i<pairs.length; i++){
+    var pair = pairs[i].split("=");
+    cookies[(pair[0]+'').trim()] = unescape(pair.slice(1).join('='));
+  }
+  return cookies;
+}
+
+var myCookies = getCookies();
+
+
+function link() {
+    switch (myCookies.role) {
+        case 'professeur':
+            location.assign('/viewelevesprof?classe=<%= user.Classe %>&matiere=<%= user.Matiere %>')
+            break;
+        case 'directeur':
+            location.assign('/listedeclasse')
+            break;
+    
+        default:
+            break;
+    }
+}
 </script>
 <!-- /Main Site -->
 
